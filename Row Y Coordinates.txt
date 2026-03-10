@@ -1,0 +1,16 @@
+Y Coordinates:
+
+Y Top (Diamond): -18.612
+Y Bottom (Diamond): -15.509
+
+Y Center (Cherry): -16.387
+
+Bar Y: -17.283
+
+Melon Y: -17.719
+
+Crown Y: -18.155
+
+Seven Y: -16.838
+
+Lemon Y: -15.926
