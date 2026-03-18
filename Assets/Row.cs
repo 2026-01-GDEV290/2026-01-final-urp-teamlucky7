@@ -9,6 +9,9 @@ public class Row : MonoBehaviour
     public bool rowStopped;
     public string stoppedSlot;
 
+    public float[] rowLocations = { -18.640f, -17.991f, -17.314f, -16.686f, -16.002f, -15.364f }; //array of slot locations, starting from the top and going to the buttom
+    //In order: Star [0], Moon [1], Alien [2], Seven [3], Xenomorph [4], Sun [5]
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -80,40 +83,66 @@ public class Row : MonoBehaviour
             yield return new WaitForSeconds(timeInterval);
         }
 
-        if(transform.position.y == -18.612f)
+        rowStopped = true;
+        
+        if (rowStopped == true)
         {
-            stoppedSlot = "Diamond";
+            double[] rowStoppedArray = {0,0,0,0,0};
+            bool foundEquals = false;
+
+            for(int i = 0; transform.position.y == rowLocations[i] && i < rowLocations.Length; i++)
+            {
+                foundEquals = true;
+            }
+            for (int i = 0; foundEquals == false && (transform.position.y > rowLocations[i] || transform.position.y < rowLocations[i]) && i < rowLocations.Length - 1; i++)
+            {
+                if(transform.position.y > rowLocations[i])
+                {
+                    rowStoppedArray[i] = transform.position.y - rowLocations[i];
+                } else if(transform.position.y < rowLocations[i])
+                {
+                    rowStoppedArray[i] = rowLocations[i] - transform.position.y;
+                }
+            }
+            for(int i = 0; foundEquals == false && rowStoppedArray.Length > 0 && i < rowStoppedArray.Length; i++)
+            {
+                int k = 0;
+                for(int j = 1; j < rowStoppedArray.Length - 1; j++)
+                {
+                    if (rowStoppedArray[j] < rowStoppedArray[j - 1])
+                    {
+                        k = j;
+                    }
+                }
+                transform.position = new Vector2(transform.position.x, rowLocations[k]);
+            }
+
         }
-        else if (transform.position.y == -18.155f)
+
+        if (transform.position.y == rowLocations[0])
+        {
+            stoppedSlot = "Star";
+        }
+        else if (transform.position.y == rowLocations[1])
         {
             stoppedSlot = "Crown";
         }
-        else if (transform.position.y == -17.719f)
+        else if (transform.position.y == rowLocations[2])
         {
             stoppedSlot = "Melon";
         }
-        else if (transform.position.y == -17.283f)
+        else if (transform.position.y == rowLocations[3])
         {
             stoppedSlot = "Bar";
         }
-        else if (transform.position.y == -16.838f)
+        else if (transform.position.y == rowLocations[4])
         {
             stoppedSlot = "Seven";
         }
-        else if (transform.position.y == -16.387f)
+        else if (transform.position.y == rowLocations[5])
         {
             stoppedSlot = "Cherry";
-        }
-        else if (transform.position.y == -17.719f)
-        {
-            stoppedSlot = "Lemon";
-        }
-        else if (transform.position.y == -15.926f)
-        {
-            stoppedSlot = "Diamond";
-        }
-
-        rowStopped = true;
+        }        
     }
 
     // Update is called once per frame

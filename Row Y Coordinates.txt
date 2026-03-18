@@ -1,16 +1,15 @@
 Y Coordinates:
 
-Y Top (Diamond): -18.612
-Y Bottom (Diamond): -15.509
+Sun Top Y: 
 
-Y Center (Cherry): -16.387
+Y Top (Star): -18.647
 
-Bar Y: -17.283
+Moon Y: -17.991
 
-Melon Y: -17.719
+Y Center (Alien): -17.314
 
-Crown Y: -18.155
+Seven Y: -16.686
 
-Seven Y: -16.838
+Xenomorph Y: -16.002
 
-Lemon Y: -15.926
+Sun Button Y: -15.364
