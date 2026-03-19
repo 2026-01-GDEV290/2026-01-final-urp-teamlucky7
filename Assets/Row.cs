@@ -125,11 +125,11 @@ public class Row : MonoBehaviour
         }
         else if (transform.position.y == rowLocations[1])
         {
-            stoppedSlot = "Crown";
+            stoppedSlot = "Moon";
         }
         else if (transform.position.y == rowLocations[2])
         {
-            stoppedSlot = "Melon";
+            stoppedSlot = "Alien";
         }
         else if (transform.position.y == rowLocations[3])
         {

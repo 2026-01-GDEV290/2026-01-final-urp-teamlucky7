@@ -11,19 +11,31 @@ public class GameController : MonoBehaviour
     private Text prizeText;
 
     [SerializeField]
+    private Text scoreText;
+
+    [SerializeField]
+    private Text scoreNumText;
+
+    [SerializeField]
     private Row[] rows;
 
     [SerializeField]
     private Transform handle;
 
     private int prizeValue;
+    private int currentScore;
+    private int newScore;
 
     private bool resultsChecked = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-
+        prizeText.enabled = false;
+        scoreText.enabled = true;
+        scoreNumText.enabled = true;
+        currentScore = 0;
+        newScore = 0;
     }
 
     // Update is called once per frame
@@ -31,6 +43,7 @@ public class GameController : MonoBehaviour
     {
         if (!rows[0].rowStopped || !rows[1].rowStopped || !rows[2].rowStopped)
         {
+            currentScore = newScore;
             prizeValue = 0;
             prizeText.enabled = false;
             resultsChecked = false;
@@ -71,24 +84,19 @@ public class GameController : MonoBehaviour
 
     private void CheckResults()
     {
-        if (rows[0].stoppedSlot == "Diamond" && rows[1].stoppedSlot == "Diamond" && rows[2].stoppedSlot == "Diamond")
+        if (rows[0].stoppedSlot == "Star" && rows[1].stoppedSlot == "Star" && rows[2].stoppedSlot == "Star")
         {
             prizeValue = 100;
         }
 
-        else if (rows[0].stoppedSlot == "Crown" && rows[1].stoppedSlot == "Crown" && rows[2].stoppedSlot == "Crown")
+        else if (rows[0].stoppedSlot == "Moon" && rows[1].stoppedSlot == "Moon" && rows[2].stoppedSlot == "Moon")
         {
             prizeValue = 200;
         }
 
-        else if (rows[0].stoppedSlot == "Melon" && rows[1].stoppedSlot == "Melon" && rows[2].stoppedSlot == "Melon")
+        else if (rows[0].stoppedSlot == "Alien" && rows[1].stoppedSlot == "Alien" && rows[2].stoppedSlot == "Alien")
         {
             prizeValue = 300;
-        }
-
-        else if (rows[0].stoppedSlot == "Bar" && rows[1].stoppedSlot == "Bar" && rows[2].stoppedSlot == "Bar")
-        {
-            prizeValue = 400;
         }
 
         else if (rows[0].stoppedSlot == "Seven" && rows[1].stoppedSlot == "Seven" && rows[2].stoppedSlot == "Seven")
@@ -96,33 +104,38 @@ public class GameController : MonoBehaviour
             prizeValue = 777;
         }
 
-        else if (rows[0].stoppedSlot == "Cherry" && rows[1].stoppedSlot == "Cherry" && rows[2].stoppedSlot == "Cherry")
+        else if (rows[0].stoppedSlot == "Bar" && rows[1].stoppedSlot == "Bar" && rows[2].stoppedSlot == "Bar")
+        {
+            prizeValue = 400;
+        }
+
+        else if (rows[0].stoppedSlot == "Xenomorph" && rows[1].stoppedSlot == "Xenomorph" && rows[2].stoppedSlot == "Xenomorph")
         {
             prizeValue = 600;
         }
 
-        else if (rows[0].stoppedSlot == "Lemon" && rows[1].stoppedSlot == "Lemon" && rows[2].stoppedSlot == "Lemon")
+        else if (rows[0].stoppedSlot == "Sun" && rows[1].stoppedSlot == "Sun" && rows[2].stoppedSlot == "Sun")
         {
             prizeValue = 800;
         }
 
-        else if ((rows[0].stoppedSlot == rows[1].stoppedSlot && rows[1].stoppedSlot == "Diamond")
-            || (rows[1].stoppedSlot == rows[2].stoppedSlot && rows[2].stoppedSlot == "Diamond")
-            || (rows[0].stoppedSlot == rows[2].stoppedSlot && rows[2].stoppedSlot == "Diamond"))
+        else if ((rows[0].stoppedSlot == rows[1].stoppedSlot && rows[1].stoppedSlot == "Star")
+            || (rows[1].stoppedSlot == rows[2].stoppedSlot && rows[2].stoppedSlot == "Star")
+            || (rows[0].stoppedSlot == rows[2].stoppedSlot && rows[2].stoppedSlot == "Star"))
         {
             prizeValue = 50;
         }
 
-        else if ((rows[0].stoppedSlot == rows[1].stoppedSlot && rows[1].stoppedSlot == "Crown")
-            || (rows[1].stoppedSlot == rows[2].stoppedSlot && rows[2].stoppedSlot == "Crown")
-            || (rows[0].stoppedSlot == rows[2].stoppedSlot && rows[2].stoppedSlot == "Crown"))
+        else if ((rows[0].stoppedSlot == rows[1].stoppedSlot && rows[1].stoppedSlot == "Moon")
+            || (rows[1].stoppedSlot == rows[2].stoppedSlot && rows[2].stoppedSlot == "Moon")
+            || (rows[0].stoppedSlot == rows[2].stoppedSlot && rows[2].stoppedSlot == "Moon"))
         {
             prizeValue = 100;
         }
 
-        else if ((rows[0].stoppedSlot == rows[1].stoppedSlot && rows[1].stoppedSlot == "Melon")
-            || (rows[1].stoppedSlot == rows[2].stoppedSlot && rows[2].stoppedSlot == "Melon")
-            || (rows[0].stoppedSlot == rows[2].stoppedSlot && rows[2].stoppedSlot == "Melon"))
+        else if ((rows[0].stoppedSlot == rows[1].stoppedSlot && rows[1].stoppedSlot == "Alien")
+            || (rows[1].stoppedSlot == rows[2].stoppedSlot && rows[2].stoppedSlot == "Alien")
+            || (rows[0].stoppedSlot == rows[2].stoppedSlot && rows[2].stoppedSlot == "Alien"))
         {
             prizeValue = 150;
         }
@@ -141,18 +154,25 @@ public class GameController : MonoBehaviour
             prizeValue = 389;
         }
 
-        else if ((rows[0].stoppedSlot == rows[1].stoppedSlot && rows[1].stoppedSlot == "Cherry")
-            || (rows[1].stoppedSlot == rows[2].stoppedSlot && rows[2].stoppedSlot == "Cherry")
-            || (rows[0].stoppedSlot == rows[2].stoppedSlot && rows[2].stoppedSlot == "Cherry"))
+        else if ((rows[0].stoppedSlot == rows[1].stoppedSlot && rows[1].stoppedSlot == "Xenomorph")
+            || (rows[1].stoppedSlot == rows[2].stoppedSlot && rows[2].stoppedSlot == "Xenomorph")
+            || (rows[0].stoppedSlot == rows[2].stoppedSlot && rows[2].stoppedSlot == "Xenomorph"))
         {
             prizeValue = 300;
         }
 
-        else if ((rows[0].stoppedSlot == rows[1].stoppedSlot && rows[1].stoppedSlot == "Lemon")
-            || (rows[1].stoppedSlot == rows[2].stoppedSlot && rows[2].stoppedSlot == "Lemon")
-            || (rows[0].stoppedSlot == rows[2].stoppedSlot && rows[2].stoppedSlot == "Lemon"))
+        else if ((rows[0].stoppedSlot == rows[1].stoppedSlot && rows[1].stoppedSlot == "Sun")
+            || (rows[1].stoppedSlot == rows[2].stoppedSlot && rows[2].stoppedSlot == "Sun")
+            || (rows[0].stoppedSlot == rows[2].stoppedSlot && rows[2].stoppedSlot == "Sun"))
         {
             prizeValue = 800;
         }
+
+        if (currentScore != prizeValue + currentScore)
+        {
+            newScore = prizeValue + currentScore;
+        }
+
+        scoreNumText.text = "" + newScore;
     }
 }
