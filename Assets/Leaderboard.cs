@@ -100,12 +100,29 @@ public class Leaderboard : MonoBehaviour
         string[] npcOrderedList = {"", "", "", "", "", "", ""};
         float[] npcOrderedValue = { 0, 0, 0, 0, 0, 0, 0 };
 
-        for (int i = npcPool.Count; i > 0; i--)
+        for (int i = 0; i-1 < npcPool.Count; i++)
         {
-            for(int j = 0; j < npcOrderedValue.Length; j++)
+            Debug.Log("First Loop");
+            for(int j = npcOrderedValue.Length - 1; j+1 < npcOrderedValue.Length; j--)
             {
-
+                Debug.Log("Second Loop");
+                if (npcPool.ContainsKey(npcList[i]) && npcPool[npcList[i]] < npcOrderedValue[j])
+                {
+                    npcOrderedValue[j] = npcPool[npcList[i]];
+                    npcOrderedList[j] = npcList[i];
+                    Debug.Log("" + npcOrderedList[j] + ": " + npcOrderedValue[j]);
+                } else if(npcPool.ContainsKey(playerCharacter) && playerMoneyValue < npcOrderedValue[j] && i > 0 && j > 0)
+                {
+                    npcOrderedValue[j] = npcPool[npcList[i]];
+                    npcOrderedList[j] = playerCharacter;
+                    Debug.Log("" + npcOrderedList[j] + ": " + npcOrderedValue[j]);
+                } else
+                {
+                    break;
+                }
             }
+
+            
         }
         //for (int i = 0; i < npcPool.Count - 1; i++)
         //{
