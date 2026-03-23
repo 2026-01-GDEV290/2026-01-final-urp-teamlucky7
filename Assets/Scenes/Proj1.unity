@@ -780,7 +780,7 @@ GameObject:
   - component: {fileID: 1162261401}
   - component: {fileID: 1162261400}
   m_Layer: 5
-  m_Name: npcName1
+  m_Name: npcText1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -859,7 +859,7 @@ GameObject:
   - component: {fileID: 1297570364}
   - component: {fileID: 1297570363}
   m_Layer: 5
-  m_Name: npcName4
+  m_Name: npcText4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -938,7 +938,7 @@ GameObject:
   - component: {fileID: 1386738344}
   - component: {fileID: 1386738343}
   m_Layer: 5
-  m_Name: npcName3
+  m_Name: npcText3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1098,7 +1098,7 @@ GameObject:
   - component: {fileID: 1501460020}
   - component: {fileID: 1501460019}
   m_Layer: 5
-  m_Name: npcName5
+  m_Name: npcText5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1573,7 +1573,7 @@ GameObject:
   - component: {fileID: 1864601536}
   - component: {fileID: 1864601535}
   m_Layer: 5
-  m_Name: npcName2
+  m_Name: npcText2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1652,7 +1652,7 @@ GameObject:
   - component: {fileID: 1934216725}
   - component: {fileID: 1934216724}
   m_Layer: 5
-  m_Name: npcName6
+  m_Name: npcText6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1758,8 +1758,8 @@ MonoBehaviour:
   npcText7: {fileID: 2132549226}
   npcValue1: {fileID: 1462268607}
   npcValue2: {fileID: 520532851}
-  npcValue3: {fileID: 1386738343}
-  npcValue4: {fileID: 1297570363}
+  npcValue3: {fileID: 1126821393}
+  npcValue4: {fileID: 1573829212}
   npcValue5: {fileID: 1539470490}
   npcValue6: {fileID: 1854295743}
   npcValue7: {fileID: 1095497292}
@@ -1791,7 +1791,7 @@ GameObject:
   - component: {fileID: 2132549227}
   - component: {fileID: 2132549226}
   m_Layer: 5
-  m_Name: npcName7
+  m_Name: npcText7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
