@@ -1,4 +1,6 @@
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -47,19 +49,28 @@ public class Leaderboard : MonoBehaviour
     [SerializeField]
     private int day = 1;
 
+    public bool updateLeaderboard = false;
+
+    private bool showingLeaderboard = false;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        updateLeaderboard = false;
+        playerCharacter = "";
         InitializeLeaderboard();
-        ShowLeaderboard();
 
         Debug.Log(npcPool.Count);
+        day = 1;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if(showingLeaderboard == false && updateLeaderboard == true)
+        {
+            ShowLeaderboard();
+        }
     }
 
     public void InitializeLeaderboard()
@@ -74,14 +85,29 @@ public class Leaderboard : MonoBehaviour
 
         if (day == 1)
         {
-            if (npcPool.ContainsKey(playerCharacter))
+            Debug.Log("Day 1");
+            for (int i = 0; i < npcList.Length; i++)
             {
-                npcPool.Remove(playerCharacter);
-            }
-
-            for (int i = 0; i < npcPool.Count - 1; i++)
-            {
-                int npcMoneyValue = Random.Range(50, 6000);
+                Debug.Log("initialized leaderboard for loop");
+                if (npcPool.ContainsKey(nameof(playerCharacter)))
+                {
+                    Debug.Log("____________________________________________________________________________");
+                    Debug.Log("Attempting to remove player...");
+                    Debug.Log("____________________________________________________________________________");
+                    npcPool.Remove(nameof(playerCharacter));
+                    if (npcPool.ContainsKey(nameof(playerCharacter)))
+                    {
+                        Debug.Log("____________________________________________________________________________");
+                        Debug.Log("Player Character not removed");
+                        Debug.Log("____________________________________________________________________________");
+                    } else
+                    {
+                        Debug.Log("____________________________________________________________________________");
+                        Debug.Log("Player Character successfully removed");
+                        Debug.Log("____________________________________________________________________________");
+                    }
+                }
+                int npcMoneyValue = UnityEngine.Random.Range(50, 6000);
                 npcPool[npcList[i]] = npcMoneyValue;
             }
         }
@@ -89,7 +115,7 @@ public class Leaderboard : MonoBehaviour
         {
             for (int i = 0; i < npcPool.Count - 1; i++)
             {
-                int npcMoneyValue = Random.Range(150, 5000);
+                int npcMoneyValue = UnityEngine.Random.Range(150, 5000);
                 npcPool[npcList[i]] += npcMoneyValue;
             }
         }
@@ -97,37 +123,89 @@ public class Leaderboard : MonoBehaviour
 
     public void ShowLeaderboard()
     {
+        showingLeaderboard = true;
         string[] npcOrderedList = {"", "", "", "", "", "", ""};
         float[] npcOrderedValue = { 0, 0, 0, 0, 0, 0, 0 };
 
         Debug.Log("NPC Ordered Value Length: " + npcOrderedValue.Length);
         Debug.Log("NPC Ordered List Length: " + npcOrderedList.Length);
 
-        for (int i = 0; i < 3; i++)
+        //for (int i = 0; i <= npcList.Length - 1; i++) //for loop that goes from the first element of the NPC List array to the last; used to search for the specific key in the NPC Pool hashmap, until it reaches the last name
+        //{
+        //    Debug.Log("First Loop");
+        //    var j = npcOrderedValue.Length;
+
+        //    //for(int j = npcOrderedValue.Length - 1; j >= 0; j--) //for loop that goes from the first element of the Ordered Value list to the last; used to check each value currently inside of the list 
+        //    while (j-1 > 0) {
+        //        j--;
+        //        Debug.Log("Second Loop");
+        //        Debug.Log("J = " + j);
+        //        if(j == 6 && i  == 0)
+        //        {
+        //            npcOrderedValue[j] = npcPool[npcList[i]];
+        //            npcOrderedList[i] = npcList[i];
+        //        } else if (npcPool.ContainsKey(npcList[i]) && npcPool[npcList[i]] < npcOrderedValue[j]) //Checks if the name in slot I of the NPC list is inside of the hashmap "NPC Pool"
+        //        {
+        //            npcOrderedValue[j - 1] = npcOrderedValue[j];
+        //            npcOrderedValue[j] = npcPool[npcList[i]];
+        //            npcOrderedList[i - 1] = npcList[i];
+        //            npcOrderedList[i] = npcList[i];
+        //            Debug.Log("" + npcList[i] + ": " + npcOrderedValue[j] + "");
+        //            Debug.Log("Real Value: " + npcList[i] + ": " + npcPool[npcList[i]] + "");
+        //        }
+        //        else if (j == 0 && npcPool[npcList[i]] > npcOrderedValue[j])
+        //        {
+        //            npcOrderedValue[j] = npcPool[npcList[i]];
+        //            npcOrderedList[i] = npcList[i];
+        //        }
+        //        else if (npcPool.ContainsKey(playerCharacter) && playerMoneyValue < npcOrderedValue[j])
+        //        {
+        //            npcOrderedValue[j] = npcPool[npcList[i]];
+        //            npcOrderedList[i] = playerCharacter;
+        //            Debug.Log("" + npcOrderedList[j] + ": " + npcOrderedValue[j]);
+        //        }
+        //        else
+        //        {
+        //            Debug.Log("No conditions met");
+        //        }
+        //    }
+
+        for(int i = 0;i < npcOrderedList.Length; i++)
         {
-            Debug.Log("First Loop");
-            for(int j = 0; j < npcOrderedValue.Length && j > 0; j++)
+            npcOrderedList[i] = npcList[i];
+        }
+
+        for (int i = 0; i < npcOrderedValue.Length; i++)
+        {
+            if (npcPool.ContainsKey(npcList[i]))
             {
-                Debug.Log("Second Loop");
+                npcOrderedValue[i] = npcPool[npcList[i]];
+            }
+            else if (playerCharacter.Equals(npcList[i], StringComparison.OrdinalIgnoreCase))
+            {
+                npcOrderedValue[i] = playerMoneyValue;
+            }   
+        }
+
+        Array.Sort(npcOrderedValue);
+        Array.Reverse(npcOrderedValue);
+
+        for (int i = 0; i < npcList.Length; i++)
+        {
+            Debug.Log("I = " + i);
+            Debug.Log("Real Value: " + npcList[i] + ": " + npcPool[npcList[i]] + "");
+            for (int j = 0; j < npcOrderedValue.Length; j++)
+            {
                 Debug.Log("J = " + j);
-                if (npcPool.ContainsKey(npcList[i]))
+                if (npcPool[npcList[i]] == npcOrderedValue[j])
                 {
-                    npcOrderedValue[j] = npcPool[npcList[i]];
+                    Debug.Log("" + npcList[i] + ": " + npcOrderedValue[j] + "");
                     npcOrderedList[j] = npcList[i];
-                    Debug.Log("" + npcOrderedList[j] + ": " + npcOrderedValue[j] + "");
-                } else if(npcPool.ContainsKey(playerCharacter) && playerMoneyValue < npcOrderedValue[j] && i > 0 && j > 0)
-                {
-                    npcOrderedValue[j] = npcPool[npcList[i]];
-                    npcOrderedList[j] = playerCharacter;
-                    Debug.Log("" + npcOrderedList[j] + ": " + npcOrderedValue[j]);
-                } else
-                {
-                    break;
                 }
             }
-
-            
         }
+
+        //}
         //for (int i = 0; i < npcPool.Count - 1; i++)
         //{
         //    if(i == 0)
@@ -190,5 +268,9 @@ public class Leaderboard : MonoBehaviour
         npcValue5.enabled = true;
         npcValue6.enabled = true;
         npcValue7.enabled = true;
+
+        showingLeaderboard = false;
+        updateLeaderboard = false;
     }
 }
+

@@ -1764,6 +1764,7 @@ MonoBehaviour:
   npcValue6: {fileID: 1854295743}
   npcValue7: {fileID: 1095497292}
   day: 1
+  updateLeaderboard: 0
 --- !u!4 &2081215892
 Transform:
   m_ObjectHideFlags: 0
