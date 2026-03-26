@@ -11,9 +11,11 @@ public class Leaderboard : MonoBehaviour
     private string[] npcList = { "Strangula", "Bullseye", "Madam Fortune", "Jack-Of-All-Trades", "Business Man", "Detective", "Mafia Man" };
 
     [SerializeField]
-    private string playerCharacter = "";
-    
+    private string playerCharacter;
+    [SerializeField]
     private float playerMoneyValue = 0;
+    [SerializeField]
+    private int day = 1;
 
     [SerializeField]
     private Text npcText1;
@@ -45,10 +47,6 @@ public class Leaderboard : MonoBehaviour
     [SerializeField]
     private Text npcValue7;
 
-
-    [SerializeField]
-    private int day = 1;
-
     public bool updateLeaderboard = false;
 
     private bool showingLeaderboard = false;
@@ -58,8 +56,6 @@ public class Leaderboard : MonoBehaviour
     {
         updateLeaderboard = false;
         playerCharacter = "";
-        InitializeLeaderboard();
-
         Debug.Log(npcPool.Count);
         day = 1;
     }
@@ -69,19 +65,19 @@ public class Leaderboard : MonoBehaviour
     {
         if(showingLeaderboard == false && updateLeaderboard == true)
         {
+            InitializeLeaderboard();
             ShowLeaderboard();
         }
     }
 
     public void InitializeLeaderboard()
     {
-        npcPool.Add("Strangula", 0);
-        npcPool.Add("Bullseye", 0);
-        npcPool.Add("Madam Fortune", 0);
-        npcPool.Add("Jack-Of-All-Trades", 0);
-        npcPool.Add("Business Man", 0);
-        npcPool.Add("Detective", 0);
-        npcPool.Add("Mafia Man", 0);
+        for(int i = 0; i < npcList.Length - 1; i++)
+        {
+            if (!npcPool.ContainsKey(npcList[i])){
+                npcPool.Add(npcList[i], 0);
+            }
+        }
 
         if (day == 1)
         {
@@ -89,13 +85,13 @@ public class Leaderboard : MonoBehaviour
             for (int i = 0; i < npcList.Length; i++)
             {
                 Debug.Log("initialized leaderboard for loop");
-                if (npcPool.ContainsKey(nameof(playerCharacter)))
+                if (npcPool.ContainsKey(playerCharacter))
                 {
                     Debug.Log("____________________________________________________________________________");
                     Debug.Log("Attempting to remove player...");
                     Debug.Log("____________________________________________________________________________");
-                    npcPool.Remove(nameof(playerCharacter));
-                    if (npcPool.ContainsKey(nameof(playerCharacter)))
+                    npcPool.Remove(playerCharacter);
+                    if (npcPool.ContainsKey(playerCharacter))
                     {
                         Debug.Log("____________________________________________________________________________");
                         Debug.Log("Player Character not removed");
@@ -183,6 +179,8 @@ public class Leaderboard : MonoBehaviour
             }
             else if (playerCharacter.Equals(npcList[i], StringComparison.OrdinalIgnoreCase))
             {
+                Debug.Log("Player Character Found");
+                Debug.Log("Adding Player Character to Ordered Value");
                 npcOrderedValue[i] = playerMoneyValue;
             }   
         }
@@ -193,14 +191,21 @@ public class Leaderboard : MonoBehaviour
         for (int i = 0; i < npcList.Length; i++)
         {
             Debug.Log("I = " + i);
-            Debug.Log("Real Value: " + npcList[i] + ": " + npcPool[npcList[i]] + "");
+            if (npcPool.ContainsKey(npcList[i]))
+            {
+                Debug.Log("Real Value: " + npcList[i] + ": " + npcPool[npcList[i]] + "");
+            }
+
             for (int j = 0; j < npcOrderedValue.Length; j++)
             {
                 Debug.Log("J = " + j);
-                if (npcPool[npcList[i]] == npcOrderedValue[j])
+                if (npcPool.ContainsKey(npcList[i]) && npcPool[npcList[i]] == npcOrderedValue[j])
                 {
                     Debug.Log("" + npcList[i] + ": " + npcOrderedValue[j] + "");
                     npcOrderedList[j] = npcList[i];
+                } else if(playerCharacter.Equals(npcList[i], StringComparison.OrdinalIgnoreCase) && npcOrderedValue[j] == playerMoneyValue)
+                {
+                    npcOrderedList[j] = playerCharacter;
                 }
             }
         }

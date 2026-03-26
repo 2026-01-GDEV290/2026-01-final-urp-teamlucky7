@@ -1748,7 +1748,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98d4b6f354ca0b943aa7d7694c39e61d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerCharacter: 
+  playerCharacter: Madam Fortune
+  playerMoneyValue: 0
+  day: 1
   npcText1: {fileID: 1162261400}
   npcText2: {fileID: 1864601535}
   npcText3: {fileID: 1386738343}
@@ -1763,7 +1765,6 @@ MonoBehaviour:
   npcValue5: {fileID: 1539470490}
   npcValue6: {fileID: 1854295743}
   npcValue7: {fileID: 1095497292}
-  day: 1
   updateLeaderboard: 0
 --- !u!4 &2081215892
 Transform:
