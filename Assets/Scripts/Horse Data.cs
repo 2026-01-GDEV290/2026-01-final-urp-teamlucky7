@@ -1,10 +1,18 @@
 using UnityEngine;
 
-public class HorseData
+public class HorseData : MonoBehaviour
 {
     public string horseName;
-    public float baseSpeed;
-    public float stamina;
-    public float currentPosition;
-    public float odds; // e.g., 5.0 for 5/1
+    public int lastCheckpoint = 0;
+    public float distanceToNextCheckpoint = 0f;
+    public bool finished = false;
+    public float finishTime = 0f;
+
+    // Call this whenever a horse passes a checkpoint
+    public void UpdateProgress(int checkpointIndex, float distance)
+    {
+        lastCheckpoint = checkpointIndex;
+        distanceToNextCheckpoint = distance;
+    }
 }
+

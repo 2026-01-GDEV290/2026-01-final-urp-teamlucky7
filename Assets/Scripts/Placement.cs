@@ -1,48 +1,36 @@
 using UnityEngine;
 using System.Collections.Generic;
-using System.Collections;
+using TMPro; // For UI display
 
 public class Placement : MonoBehaviour
 {
-    public List<HorseData> horses;
-    public Transform finishLine;
-    private bool isRacing = false;
+    public int totalLaps = 3;
+    private List<HorseRank> finishedHorses = new List<HorseRank>();
+    public TMP_Text leaderboardText;
+    internal bool hasFinished;
+    internal int lapsCompleted;
 
-    public void StartRace()
+    public void OnHorseFinish(HorseRank horse)
     {
-        if (!isRacing) StartCoroutine(RaceSimulation());
+        if (!finishedHorses.Contains(horse))
+        {
+            horse.hasFinished = true;
+            finishedHorses.Add(horse);
+
+            // Stop the horse's movement script
+            horse.GetComponent<HorseMovement>().enabled = false;
+
+            UpdateLeaderboardUI();
+        }
     }
 
-    IEnumerator RaceSimulation()
+    void UpdateLeaderboardUI()
     {
-        isRacing = true;
-        Debug.Log("Race Started!");
-
-        while (!CheckForWinner())
+        string results = "FINAL PLACEMENT:\n";
+        for (int i = 0; i < finishedHorses.Count; i++)
         {
-            foreach (var horse in horses)
-            {
-                // Simulate speed with random variation
-                float speed = horse.baseSpeed * Random.Range(0.8f, 1.2f);
-                horse.currentPosition += speed * Time.deltaTime;
-            }
-            yield return null; // Wait for next frame
+            results += $"{i + 1}. {finishedHorses[i].name}\n";
         }
-
-        isRacing = false;
-        Debug.Log("Race Finished!");
-    }
-
-    bool CheckForWinner()
-    {
-        foreach (var horse in horses)
-        {
-            if (horse.currentPosition >= finishLine.position.z)
-            {
-                Debug.Log(horse.horseName + " wins!");
-                return true;
-            }
-        }
-        return false;
+        leaderboardText.text = results;
     }
 }

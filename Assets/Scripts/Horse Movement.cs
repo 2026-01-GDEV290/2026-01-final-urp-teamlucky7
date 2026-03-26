@@ -2,28 +2,26 @@ using UnityEngine;
 
 public class HorseMovement : MonoBehaviour
 {
-    [Range(0, 100)]
-    public float chanceOfSuccess = 50f; // 50% chance
+    public Transform[] waypoints;
+    private int currentWaypoint = 0;
+    public float speed = 10f;
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            if (CheckOdds(chanceOfSuccess))
-            {
-                Debug.Log("Success!");
-            }
-            else
-            {
-                Debug.Log("Failure.");
-            }
-        }
-    }
+        if (currentWaypoint >= waypoints.Length) return;
 
-    // Returns true if the event occurs
-    public bool CheckOdds(float percentage)
-    {
-        // Random.value returns a float between 0.0 and 1.0
-        return Random.value < (percentage / 100f);
+        // Move towards current waypoint
+        Vector3 direction = waypoints[currentWaypoint].position - transform.position;
+        transform.position += direction.normalized * speed * Time.deltaTime;
+
+        // Rotate to look at waypoint
+        transform.rotation = Quaternion.Slerp(transform.rotation,
+                             Quaternion.LookRotation(direction), 0.1f);
+
+        // Switch to next waypoint when close
+        if (Vector3.Distance(transform.position, waypoints[currentWaypoint].position) < 2f)
+        {
+            currentWaypoint++;
+        }
     }
 }
