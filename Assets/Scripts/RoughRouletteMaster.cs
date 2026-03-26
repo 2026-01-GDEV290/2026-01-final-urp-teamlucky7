@@ -10,6 +10,10 @@ public class RoughRouletteMaster : MonoBehaviour
         1,3,5,7,9,12,14,16,18,
         19,21,23,25,27,30,32,34,36
     };
+    private HashSet<int> evenNumbers = new HashSet<int>
+    {
+        2,4,6,8,10,12,14,16,18,20,22,24,26,28,30,32,34,36
+    };
 
     private void Awake()
     {
@@ -42,7 +46,18 @@ public class RoughRouletteMaster : MonoBehaviour
             if (IsBlack(result))
                 win = true;
         }
-
+        //  EVEN BET
+        else if (bet == "EVEN")
+        {
+            if (IsEven(result))
+                win = true;
+        }
+        //  ODD BET
+        else if (bet == "ODD")
+        {
+            if (IsOdd(result))
+                win = true;
+        }
         if (win)
             Debug.Log("WIN!");
         else
@@ -69,5 +84,21 @@ public class RoughRouletteMaster : MonoBehaviour
 
         int num = int.Parse(number);
         return !redNumbers.Contains(num);
+    }
+    
+    bool IsEven(string number)
+    {
+        if (number == "0" || number == "00") return false;
+
+        int num = int.Parse(number);
+        return evenNumbers.Contains(num);
+    }
+    
+    bool IsOdd(string number)
+    {
+        if (number == "0" || number == "00") return false;
+
+        int num = int.Parse(number);
+        return !evenNumbers.Contains(num);
     }
 }
