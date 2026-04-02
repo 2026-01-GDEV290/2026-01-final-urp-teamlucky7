@@ -2014,14 +2014,14 @@ Camera:
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
-  orthographic: 1
+  orthographic: 0
   orthographic size: 3.1
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingPath: -1
-  m_TargetTexture: {fileID: 0}
+  m_TargetTexture: {fileID: 8400000, guid: 75617b43b3aa97c43bbb758fe2940c34, type: 2}
   m_TargetDisplay: 0
   m_TargetEye: 3
   m_HDR: 1
@@ -2102,10 +2102,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53778f4b73643ee4585f12cac3ff4699, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wheelCenterSpinner: {fileID: 5770991962969666028}
+  wheelCenterSpinner: {fileID: 0}
   wheelOuterSpinner: {fileID: 0}
   ball: {fileID: 480240647}
-  spinningPart: {fileID: 3788342716745773867}
+  spinningPart: {fileID: 1473839608}
   centerSpinSpeed: 15
   outerSpinSpeed: 0
 --- !u!1 &896155835
@@ -2906,6 +2906,54 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1468858048}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1473839606
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1473839608}
+  - component: {fileID: 1473839607}
+  m_Layer: 0
+  m_Name: Spinning Part
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1473839607
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1473839606}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e53522d2cd570742af4e2b6d106407e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationAxis: {x: 0, y: -1, z: 0}
+  spinSpeed: 20
+--- !u!4 &1473839608
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1473839606}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 3788342716745773867}
+  - {fileID: 5123266696786605654}
+  m_Father: {fileID: 7970128515477587473}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1663885708
 GameObject:
   m_ObjectHideFlags: 0
@@ -3671,7 +3719,6 @@ GameObject:
   - component: {fileID: 3788342716745773867}
   - component: {fileID: 5770991962969666027}
   - component: {fileID: 806372570500647232}
-  - component: {fileID: 5770991962969666028}
   m_Layer: 0
   m_Name: Cylinder.001
   m_TagString: Untagged
@@ -3695,13 +3742,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2249091749147427017}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -0, y: 0.04322166, z: 0}
+  m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0.04322166, z: 0}
   m_LocalScale: {x: 100, y: 100, z: 14.575243}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1335745738}
-  m_Father: {fileID: 7970128515477587473}
+  m_Father: {fileID: 1473839608}
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!4 &3831324542232083403
 Transform:
@@ -3726,12 +3773,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5449318200507025132}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
-  m_LocalPosition: {x: -0, y: 0.27596718, z: 0}
+  m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071067}
+  m_LocalPosition: {x: 0, y: 0.27596718, z: 0}
   m_LocalScale: {x: 208.22432, y: 208.22432, z: 208.22432}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 7970128515477587473}
+  m_Father: {fileID: 1473839608}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5449318200507025132
 GameObject:
@@ -3759,20 +3806,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2249091749147427017}
   m_Mesh: {fileID: -7387706064836869012, guid: 5b2a0e4f0fd45fd4b8befecbe6b153b8, type: 3}
---- !u!114 &5770991962969666028
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2249091749147427017}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5e53522d2cd570742af4e2b6d106407e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rotationAxis: {x: 0, y: 0, z: -1}
-  spinSpeed: 20
 --- !u!1 &6604536877879308282
 GameObject:
   m_ObjectHideFlags: 0
@@ -3821,8 +3854,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3831324542232083403}
-  - {fileID: 3788342716745773867}
-  - {fileID: 5123266696786605654}
+  - {fileID: 1473839608}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1660057539 &9223372036854775807
