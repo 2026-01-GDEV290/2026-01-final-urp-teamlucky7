@@ -1078,6 +1078,7 @@ GameObject:
   - component: {fileID: 367372434}
   - component: {fileID: 367372435}
   - component: {fileID: 367372436}
+  - component: {fileID: 367372437}
   m_Layer: 0
   m_Name: horse_red_team_0
   m_TagString: Untagged
@@ -1192,6 +1193,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   horses: []
   finishLine: {fileID: 0}
+--- !u!114 &367372437
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 367372432}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 116b3fc398b6d3941b309208a9e1b013, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waypoints:
+  - {fileID: 1842875329}
+  speed: 2
 --- !u!1 &377226074
 GameObject:
   m_ObjectHideFlags: 0
@@ -1220,13 +1236,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 377226074}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.5, y: 0.5, z: -0.5, w: 0.5}
+  m_LocalRotation: {x: 0, y: 0.008726558, z: 0, w: 0.999962}
   m_LocalPosition: {x: 0, y: -0.1, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1342903894}
-  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 1, z: 0}
 --- !u!136 &377226076
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1981,6 +1997,7 @@ GameObject:
   - component: {fileID: 659142585}
   - component: {fileID: 659142586}
   - component: {fileID: 659142587}
+  - component: {fileID: 659142588}
   m_Layer: 0
   m_Name: horse_yellow_team_0
   m_TagString: Untagged
@@ -2095,6 +2112,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   horses: []
   finishLine: {fileID: 0}
+--- !u!114 &659142588
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 659142583}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 116b3fc398b6d3941b309208a9e1b013, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waypoints:
+  - {fileID: 1937426824}
+  speed: 2
 --- !u!1 &669524748
 GameObject:
   m_ObjectHideFlags: 0
@@ -3201,6 +3233,7 @@ GameObject:
   - component: {fileID: 1263645496}
   - component: {fileID: 1263645497}
   - component: {fileID: 1263645498}
+  - component: {fileID: 1263645499}
   m_Layer: 0
   m_Name: horse_green_team_0
   m_TagString: Untagged
@@ -3315,6 +3348,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   horses: []
   finishLine: {fileID: 0}
+--- !u!114 &1263645499
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1263645494}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 116b3fc398b6d3941b309208a9e1b013, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waypoints:
+  - {fileID: 266890096}
+  speed: 2
 --- !u!1 &1304972343
 GameObject:
   m_ObjectHideFlags: 0
@@ -3710,6 +3758,7 @@ GameObject:
   - component: {fileID: 1342903895}
   - component: {fileID: 1342903896}
   - component: {fileID: 1342903897}
+  - component: {fileID: 1342903898}
   m_Layer: 0
   m_Name: horse_blue_team_0
   m_TagString: Untagged
@@ -3822,8 +3871,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f08aa6ddfce83664d8a94110dd434838, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  horses: []
-  finishLine: {fileID: 0}
+  horses:
+  - {fileID: 0}
+  finishLine: {fileID: 1160012509}
+--- !u!114 &1342903898
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1342903893}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 116b3fc398b6d3941b309208a9e1b013, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waypoints:
+  - {fileID: 528576131}
+  speed: 2
 --- !u!1 &1396009957
 GameObject:
   m_ObjectHideFlags: 0

@@ -14,10 +14,6 @@ public class HorseMovement : MonoBehaviour
         Vector3 direction = waypoints[currentWaypoint].position - transform.position;
         transform.position += direction.normalized * speed * Time.deltaTime;
 
-        // Rotate to look at waypoint
-        transform.rotation = Quaternion.Slerp(transform.rotation,
-                             Quaternion.LookRotation(direction), 0.1f);
-
         // Switch to next waypoint when close
         if (Vector3.Distance(transform.position, waypoints[currentWaypoint].position) < 2f)
         {
