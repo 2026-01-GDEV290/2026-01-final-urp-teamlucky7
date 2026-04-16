@@ -1,51 +1,40 @@
 using UnityEngine;
-using System.Collections.Generic;
+using System.Collections;
 
 public class HorseRaceManager : MonoBehaviour
 {
-    public float baseSpeed = 10f;
-    public float speedVariation = 2f;
-    private float currentSpeed;
+    public GameObject[] horses;
+    public Transform finishLine;
+    private bool isRacing = false;
 
-    // Pathfinding or Waypoint System
-    public Transform[] waypoints;
-    private int currentWaypointIndex = 0;
-    internal int totalLaps;
-
-    void Update()
+    // Start race via button
+    public void StartRace()
     {
-        // 1. Calculate fluctuating speed
-        currentSpeed = baseSpeed + Random.Range(-speedVariation, speedVariation);
+        StartCoroutine(RaceRoutine());
+    }
 
-        // 2. Move towards next waypoint
-        if (waypoints.Length > 0)
+    IEnumerator RaceRoutine()
+    {
+        isRacing = true;
+        while (isRacing)
         {
-            Transform target = waypoints[currentWaypointIndex];
-            Vector3 direction = (target.position - transform.position).normalized;
-            transform.position += direction * currentSpeed * Time.deltaTime;
-
-
-            // Check if waypoint reached
-            if (Vector3.Distance(transform.position, target.position) < 1f)
+            for (int i = 0; i < horses.Length; i++)
             {
-                currentWaypointIndex = (currentWaypointIndex + 1) % waypoints.Length;
+                // Random speed variance
+                float speed = Random.Range(1f, 5f);
+                horses[i].transform.Translate(Vector3.forward * speed * Time.deltaTime);
+
+                if (horses[i].transform.position.z >= finishLine.position.z)
+                {
+                    isRacing = false;
+                    Debug.Log("Winner: Horse " + i);
+                    // Call BettingManager.OnRaceEnd here
+                    break;
+                }
             }
+            yield return null;
         }
-
-        // 3. Update Animator (if applicable)
-        // GetComponent<Animator>().SetFloat("Speed", currentSpeed);
     }
-
-    void EndRace(GameObject winner)
-    {
-        Debug.Log(winner.name + " won the race!");
-    }
-
-    internal void OnHorseFinish(Placement horse)
-    {
-        throw new System.NotImplementedException();
-    }
-
     internal static void hasFinished(HorseData horse)
     {
         throw new System.NotImplementedException();
