@@ -14,14 +14,22 @@ public class SceneNavigator : MonoBehaviour
     // Function to load a scene by its build index
     public void LoadByIndex(int sceneIndex)
     {
+        
         SceneManager.LoadScene(sceneIndex);
-        SceneManager.LoadScene(0, LoadSceneMode.Additive);
+        SceneManager.LoadScene(1, LoadSceneMode.Additive);
+    }
+
+    public void LoadCharacterSelect(int sceneIndex)
+    {
+        
+        SceneManager.LoadScene(7);
     }
 
     public void LoadRoulette(int sceneIndex)
     {
-        SceneManager.LoadScene(4);
-        SceneManager.LoadScene(5, LoadSceneMode.Additive);
-        SceneManager.LoadScene(0, LoadSceneMode.Additive);
+        
+        SceneManager.LoadScene(5);
+        SceneManager.LoadScene(6, LoadSceneMode.Additive);
+        SceneManager.LoadScene(1, LoadSceneMode.Additive);
     }
 }
