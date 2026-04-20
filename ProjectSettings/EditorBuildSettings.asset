@@ -9,16 +9,22 @@ EditorBuildSettings:
     path: Assets/Scenes/SampleScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
   - enabled: 1
-    path: Assets/Scenes/Horse Race.unity
-    guid: 0b8121ad473a011468daf57ada029f0f
+    path: Assets/Scenes/UITest.unity
+    guid: 6d6427113a02ab84abf21a66f9fe0d00
   - enabled: 1
     path: Assets/Scenes/Casino Layout.unity
     guid: edfa13d7fa845c74faf291881669a6dc
   - enabled: 1
-    path: Assets/Scenes/Roulette Betting.unity
-    guid: 4316dbac6fc758b4ab4f19ff7356d32e
+    path: Assets/Scenes/Horse Race.unity
+    guid: 0b8121ad473a011468daf57ada029f0f
   - enabled: 1
     path: Assets/Scenes/SlotsGame.unity
     guid: 64db5994c229e484f92c1600c23d2976
+  - enabled: 1
+    path: Assets/Scenes/RouletteBetting.unity
+    guid: 4316dbac6fc758b4ab4f19ff7356d32e
+  - enabled: 1
+    path: Assets/Scenes/RouletteWheel Simulation.unity
+    guid: f91e781198489ba469445088f2b08953
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0
