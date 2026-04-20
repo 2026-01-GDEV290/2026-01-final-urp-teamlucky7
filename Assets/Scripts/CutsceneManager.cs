@@ -1,3 +1,4 @@
+using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
@@ -5,12 +6,15 @@ using UnityEngine.UI;
 public class CutsceneManager : MonoBehaviour
 {
     [SerializeField]
-    private Image[] cutsceneArray;
+    private Cutscene[] cutsceneArray;
+
 
     [SerializeField]
     private bool showNextScene = false;
+
     [SerializeField]
     private DialogueManager dialogue;
+
     [SerializeField]
     private DialogueTrigger dialogueTrigger;
 
@@ -27,13 +31,51 @@ public class CutsceneManager : MonoBehaviour
         }
     }
 
-    public void showCutscene(int[] index)
+    public void createCutscene(Image[] scene, GameObject trigger)
+    {
+        Cutscene newCutscene = new Cutscene(scene, trigger);
+    }
+
+    public void addCutscene(Cutscene addedScene)
+    {
+        for(int i = 0; i < cutsceneArray.Length - 1; i++)
+        {
+            if(cutsceneArray[i] == null)
+            {
+                cutsceneArray[i] = addedScene;
+                break;
+            }
+        }
+    }
+
+    public void showCutscene(int iterator)
+    {
+        for (int i = 0; i < cutsceneArray.Length - 1; i++)
+        {
+            if (cutsceneArray[i].isActiveAndEnabled && i.Equals(iterator) == false)
+            {
+                cutsceneArray[i].enabled = false;
+            }
+        }
+
+        if (cutsceneArray[iterator].isActiveAndEnabled == false)
+        {
+            cutsceneArray[iterator].enabled = true;
+        }
+    }
+
+    public void SetCutsceneTrigger(int iterator, GameObject settrigger)
+    {
+
+    }
+
+    public void showCutsceneInOrder(int[] index)
     {
         for(int i = 0; i < index.Length; i++)
         {
             while (showNextScene == false)
             {
-                cutsceneArray[i].enabled = true;
+                cutsceneArray[i].GetScene(i).enabled = true;
                 if(dialogue.getNextSentence() == true)
                 {
                     cutsceneArray[i].enabled = false;
