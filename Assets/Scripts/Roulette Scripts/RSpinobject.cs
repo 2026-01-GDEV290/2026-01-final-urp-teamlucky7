@@ -3,7 +3,7 @@ using UnityEngine;
 public class RSpinobject : MonoBehaviour
 {
     [SerializeField] private Vector3 rotationAxis = Vector3.up;
-    [SerializeField] private float spinSpeed = 20f;
+    [SerializeField] public float spinSpeed = 20f;
 
     private void Update()
     {

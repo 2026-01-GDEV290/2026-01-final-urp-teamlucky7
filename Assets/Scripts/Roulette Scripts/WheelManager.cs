@@ -5,7 +5,7 @@ public class WheelManager : MonoBehaviour
     [SerializeField] private RSpinobject wheelCenterSpinner;
     [SerializeField] private RSpinobject wheelOuterSpinner;
     [SerializeField] private RouletteBallController ball;
-    [SerializeField] private Transform spinningPart; 
+    [SerializeField] private Transform spinningPart;
 
     [SerializeField] private float centerSpinSpeed = 15f;
     [SerializeField] private float outerSpinSpeed = 0f;
@@ -13,7 +13,7 @@ public class WheelManager : MonoBehaviour
     private void Start()
     {
         RandomizeRotation();
-        
+
         if (wheelCenterSpinner != null)
             SetSpinnerSpeed(wheelCenterSpinner, centerSpinSpeed);
 
@@ -29,6 +29,12 @@ public class WheelManager : MonoBehaviour
         }
     }
 
+    public void StartSpin()
+    {
+        RandomizeRotation();
+        LaunchBall();
+    }
+
     public void LaunchBall()
     {
         if (ball != null)
@@ -37,14 +43,11 @@ public class WheelManager : MonoBehaviour
         }
     }
 
-    private void SetSpinnerSpeed(RSpinobject spinner, float speed)
-    {
-        // public field version would be easier, but keeping this simple:
-        // either make spinSpeed public, or just set it in inspector.
-    }
-
     public void RandomizeRotation()
     {
+        if (spinningPart == null)
+            return;
+
         float randomY = Random.Range(0f, 360f);
 
         Vector3 currentRotation = spinningPart.eulerAngles;
@@ -53,5 +56,13 @@ public class WheelManager : MonoBehaviour
             randomY,
             currentRotation.z
         );
+    }
+
+    private void SetSpinnerSpeed(RSpinobject spinner, float speed)
+    {
+        if (spinner != null)
+        {
+            spinner.spinSpeed = speed;
+        }
     }
 }

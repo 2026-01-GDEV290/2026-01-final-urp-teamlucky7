@@ -1,7 +1,9 @@
+using System;
 using UnityEngine;
 
 public class RouletteBallController : MonoBehaviour
 {
+    public event Action<int> OnBallLanded;
     [Header("Orbit Target")]
     [SerializeField] private Transform wheelCenter;
 
@@ -53,7 +55,7 @@ public class RouletteBallController : MonoBehaviour
     {
         currentRadius = startRadius;
         currentHeight = startHeight;
-        currentAngularSpeed = Random.Range(minStartSpeed, maxStartSpeed);
+        currentAngularSpeed = UnityEngine.Random.Range(minStartSpeed, maxStartSpeed);
         angle = 0f;
         isDropping = false;
         hasLanded = false;
@@ -115,6 +117,9 @@ public class RouletteBallController : MonoBehaviour
 
         // Stop all motion
         currentAngularSpeed = 0f;
+
+        //Send to betting scripts
+        OnBallLanded?.Invoke(number);
 
         Debug.Log("Ball landed on: " + number);
     }

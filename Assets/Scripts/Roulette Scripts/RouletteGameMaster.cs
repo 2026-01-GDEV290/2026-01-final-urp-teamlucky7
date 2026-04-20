@@ -36,6 +36,11 @@ public class RouletteGameMaster : MonoBehaviour
 
     public void RegisterBet(BettingChip chip)
     {
+        if (bettingLocked)
+        {
+            Debug.Log("Betting is locked.");
+            return;
+        }
         if (chip == null) return;
 
         if (playerMoney < chip.betAmount)
@@ -61,6 +66,11 @@ public class RouletteGameMaster : MonoBehaviour
 
     public void RemoveBet(BettingChip chip)
     {
+        if (bettingLocked)
+        {
+            Debug.Log("Betting is locked.");
+            return;
+        }
         if (chip == null) return;
 
         if (activeBets.Remove(chip))
@@ -74,7 +84,12 @@ public class RouletteGameMaster : MonoBehaviour
         }
     }
 
-    public void SpinRoulette()
+    public bool HasAnyBetsPlaced()
+    {
+        return activeBets.Count > 0;
+    }
+
+    public void ResolveSpinResult(string result)
     {
         if (activeBets.Count == 0)
         {
@@ -82,7 +97,6 @@ public class RouletteGameMaster : MonoBehaviour
             return;
         }
 
-        string result = GetRandomResult();
         DisplayResult(result);
 
         int totalWon = 0;
@@ -110,18 +124,19 @@ public class RouletteGameMaster : MonoBehaviour
         UpdateMoneyText();
 
         if (winText != null)
+        {
+            if (totalWon > 0)
             {
-                if (totalWon > 0)
-                {
-                    winText.text = "YOU WIN!";
-                    winText.color = Color.green;
-                }
-                else
-                {
-                    winText.text = "YOU LOSE";
-                    winText.color = Color.red;
-                }
+                winText.text = "YOU WIN!";
+                winText.color = Color.green;
             }
+            else
+            {
+                winText.text = "YOU LOSE";
+                winText.color = Color.red;
+            }
+        }
+
         Debug.Log("Roulette landed on " + result);
         Debug.Log("Total Won This Spin: $" + totalWon);
 
@@ -208,11 +223,7 @@ public class RouletteGameMaster : MonoBehaviour
         activeBets.Clear();
     }
 
-    private string GetRandomResult()
-    {
-        int roll = Random.Range(0, 38);
-        return roll == 37 ? "00" : roll.ToString();
-    }
+
 
     private bool IsRed(string number)
     {
@@ -236,5 +247,22 @@ public class RouletteGameMaster : MonoBehaviour
     {
         if (number == "0" || number == "00") return false;
         return !evenNumbers.Contains(int.Parse(number));
+    }
+
+    private bool bettingLocked = false;
+
+    public bool IsBettingLocked()
+    {
+        return bettingLocked;
+    }
+
+    public void LockBetting()
+    {
+        bettingLocked = true;
+    }
+
+    public void UnlockBetting()
+    {
+        bettingLocked = false;
     }
 }
