@@ -8,6 +8,7 @@ public class SceneReloader : MonoBehaviour
     {
         // Reload the currently active scene by its build index
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        SceneManager.LoadScene(1, LoadSceneMode.Additive);
         // Alternatively, you can use the scene's name:
         // SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 
