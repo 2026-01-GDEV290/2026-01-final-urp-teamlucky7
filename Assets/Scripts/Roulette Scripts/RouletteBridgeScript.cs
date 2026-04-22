@@ -8,6 +8,9 @@ public class RouletteRoundBridge : MonoBehaviour
     [SerializeField] private WheelManager wheelManager;
     [SerializeField] private RouletteBallController ballController;
     [SerializeField] private GameObject wheelDisplayPlane;
+    [SerializeField] private int rouletteTimeCost = 30;
+
+
 
     private bool roundInProgress = false;
 
@@ -44,21 +47,27 @@ public class RouletteRoundBridge : MonoBehaviour
         if (roundInProgress)
             return;
 
-        if (bettingMaster == null || wheelManager == null || ballController == null)
-        {
-            Debug.LogWarning("Roulette bridge is missing references.");
-            return;
-        }
-
         if (!bettingMaster.HasAnyBetsPlaced())
         {
             Debug.Log("No bets placed.");
             return;
         }
 
+    
+        if (!CasinoTimeManager.Instance.CanSpendTime(rouletteTimeCost))
+        {
+            CasinoTimeManager.Instance.AdvanceToNextDay();
+            Debug.Log("Not enough time, advancing to next day.");
+            return;
+        }
+
+        // Spend time AFTER check
+        CasinoTimeManager.Instance.SpendTime(rouletteTimeCost);
+
         roundInProgress = true;
-        wheelDisplayPlane.SetActive(true);
         bettingMaster.LockBetting();
+        if (wheelDisplayPlane != null)
+        wheelDisplayPlane.SetActive(true);
         wheelManager.StartSpin();
     }
 

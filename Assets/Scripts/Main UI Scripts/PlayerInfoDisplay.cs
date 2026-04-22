@@ -8,6 +8,11 @@ public class PlayerinfoDisplay : MonoBehaviour
     [SerializeField] private TMP_Text characterNameText;
     [SerializeField] private TMP_Text balanceText;
 
+    [Header("Casino Time UI")]
+    [SerializeField] private TMP_Text dayText;
+    [SerializeField] private TMP_Text timeText;
+    [SerializeField] private TMP_Text timeRemainingText;
+
     private void Start()
     {
         RefreshDisplay();
@@ -34,5 +39,17 @@ public class PlayerinfoDisplay : MonoBehaviour
 
         if (balanceText != null)
             balanceText.text = "$" + Playerinfo.Instance.currentBalance;
+
+        if (CasinoTimeManager.Instance != null)
+        {
+            if (dayText != null)
+                dayText.text = "Day " + CasinoTimeManager.Instance.CurrentDay;
+
+            if (timeText != null)
+                timeText.text = "Time: " + CasinoTimeManager.Instance.GetFormattedTime();
+
+            if (timeRemainingText != null)
+                timeRemainingText.text = "Time Left: " + CasinoTimeManager.Instance.GetFormattedRemainingTime();
+        }
     }
 }

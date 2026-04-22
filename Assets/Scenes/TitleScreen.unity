@@ -130,6 +130,8 @@ GameObject:
   - component: {fileID: 24616783}
   - component: {fileID: 24616782}
   - component: {fileID: 24616784}
+  - component: {fileID: 24616785}
+  - component: {fileID: 24616786}
   m_Layer: 0
   m_Name: DataKeeper
   m_TagString: Untagged
@@ -155,6 +157,7 @@ MonoBehaviour:
   larrySprite: {fileID: 21300000, guid: 3118f46904e161c4e929d1fd45580c2d, type: 3}
   spyglassSprite: {fileID: 21300000, guid: 52aa5866e4c2d014fa77ab218e345285, type: 3}
   strangulaSprite: {fileID: 21300000, guid: 3ca6cebb4d9796a448183f0b2b7ca3a6, type: 3}
+  alanSprite: {fileID: 0}
 --- !u!4 &24616783
 Transform:
   m_ObjectHideFlags: 0
@@ -187,6 +190,35 @@ MonoBehaviour:
     characterName: 
     characterPortrait: {fileID: 0}
   currentBalance: 1000
+--- !u!114 &24616785
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 24616781}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e28dad7eda906964b9d3083ddf846c34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  openHour: 0
+  closeHour: 12
+  currentDay: 1
+  currentHour: 0
+  currentMinute: 0
+--- !u!114 &24616786
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 24616781}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a57ae62b58d7764ea7197cc81f0e30c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &92718013
 GameObject:
   m_ObjectHideFlags: 0

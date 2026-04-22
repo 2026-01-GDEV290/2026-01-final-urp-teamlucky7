@@ -8,10 +8,11 @@ public class RouletteGameMaster : MonoBehaviour
 
     private readonly List<BettingChip> activeBets = new List<BettingChip>();
 
-    public int playerMoney = 100;
     public TMP_Text resultText;
     public TMP_Text moneyText;
     public TMP_Text winText;
+
+    private bool bettingLocked = false;
 
     private HashSet<int> redNumbers = new HashSet<int>
     {
@@ -32,26 +33,56 @@ public class RouletteGameMaster : MonoBehaviour
     private void Start()
     {
         UpdateMoneyText();
+        RefreshSharedPlayerUI();
+    }
+
+    public bool HasAnyBetsPlaced()
+    {
+        return activeBets.Count > 0;
+    }
+
+    public void LockBetting()
+    {
+        bettingLocked = true;
+    }
+
+    public void UnlockBetting()
+    {
+        bettingLocked = false;
+    }
+
+    public bool IsBettingLocked()
+    {
+        return bettingLocked;
     }
 
     public void RegisterBet(BettingChip chip)
     {
+        if (chip == null) return;
+
         if (bettingLocked)
         {
             Debug.Log("Betting is locked.");
+            Destroy(chip.gameObject);
             return;
         }
-        if (chip == null) return;
 
-        if (playerMoney < chip.betAmount)
+        if (Playerinfo.Instance == null)
+        {
+            Debug.LogWarning("Playerinfo instance missing.");
+            Destroy(chip.gameObject);
+            return;
+        }
+
+        if (!Playerinfo.Instance.RemoveMoney(chip.betAmount))
         {
             Debug.Log("Not enough money to place bet.");
             Destroy(chip.gameObject);
             return;
         }
 
-        playerMoney -= chip.betAmount;
         UpdateMoneyText();
+        RefreshSharedPlayerUI();
 
         if (!activeBets.Contains(chip))
         {
@@ -66,27 +97,28 @@ public class RouletteGameMaster : MonoBehaviour
 
     public void RemoveBet(BettingChip chip)
     {
+        if (chip == null) return;
+
         if (bettingLocked)
         {
             Debug.Log("Betting is locked.");
             return;
         }
-        if (chip == null) return;
 
         if (activeBets.Remove(chip))
         {
-            playerMoney += chip.betAmount;
+            if (Playerinfo.Instance != null)
+            {
+                Playerinfo.Instance.AddMoney(chip.betAmount);
+            }
+
             UpdateMoneyText();
+            RefreshSharedPlayerUI();
 
             Debug.Log("Removed Bet:");
             Debug.Log("Type = " + chip.placedBetType);
             Debug.Log("Numbers = " + string.Join(", ", chip.placedNumbers));
         }
-    }
-
-    public bool HasAnyBetsPlaced()
-    {
-        return activeBets.Count > 0;
     }
 
     public void ResolveSpinResult(string result)
@@ -111,7 +143,12 @@ public class RouletteGameMaster : MonoBehaviour
             if (win)
             {
                 payout = GetPayout(chip);
-                playerMoney += payout;
+
+                if (Playerinfo.Instance != null)
+                {
+                    Playerinfo.Instance.AddMoney(payout);
+                }
+
                 totalWon += payout;
             }
 
@@ -122,6 +159,7 @@ public class RouletteGameMaster : MonoBehaviour
         }
 
         UpdateMoneyText();
+        RefreshSharedPlayerUI();
 
         if (winText != null)
         {
@@ -209,7 +247,24 @@ public class RouletteGameMaster : MonoBehaviour
     private void UpdateMoneyText()
     {
         if (moneyText != null)
-            moneyText.text = "$" + playerMoney;
+        {
+            int balance = 0;
+
+            if (Playerinfo.Instance != null)
+                balance = Playerinfo.Instance.currentBalance;
+
+            moneyText.text = "$" + balance;
+        }
+    }
+
+    private void RefreshSharedPlayerUI()
+    {
+        PlayerinfoDisplay display = FindFirstObjectByType<PlayerinfoDisplay>();
+
+        if (display != null)
+        {
+            display.RefreshDisplay();
+        }
     }
 
     private void ClearAllBets()
@@ -222,8 +277,6 @@ public class RouletteGameMaster : MonoBehaviour
 
         activeBets.Clear();
     }
-
-
 
     private bool IsRed(string number)
     {
@@ -247,22 +300,5 @@ public class RouletteGameMaster : MonoBehaviour
     {
         if (number == "0" || number == "00") return false;
         return !evenNumbers.Contains(int.Parse(number));
-    }
-
-    private bool bettingLocked = false;
-
-    public bool IsBettingLocked()
-    {
-        return bettingLocked;
-    }
-
-    public void LockBetting()
-    {
-        bettingLocked = true;
-    }
-
-    public void UnlockBetting()
-    {
-        bettingLocked = false;
     }
 }

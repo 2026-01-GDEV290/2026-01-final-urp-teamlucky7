@@ -34,7 +34,7 @@ public class Character : MonoBehaviour
         characters.Add("Larry", new CharacterInfo(3, "Larry", larrySprite));
         characters.Add("Spyglass", new CharacterInfo(4, "Spyglass", spyglassSprite));
         characters.Add("Strangula", new CharacterInfo(5, "Strangula", strangulaSprite));
-        characters.Add("Alan Sluggard", new CharacterInfo(6, "Alan Sluggard", alanSprite));
+        characters.Add("AlanSluggard", new CharacterInfo(6, "AlanSluggard", alanSprite));
     }
 
     public CharacterInfo GetCharacter(string characterKey)

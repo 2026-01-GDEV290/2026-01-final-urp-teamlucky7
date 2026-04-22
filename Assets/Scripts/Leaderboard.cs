@@ -3,12 +3,13 @@ using System.Runtime.CompilerServices;
 using System;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class Leaderboard : MonoBehaviour
 {
     public Dictionary<string, float> npcPool = new Dictionary<string, float>();
 
-    private string[] npcList = { "Strangula", "Bullseye", "Madam Fortune", "Jack-Of-All-Trades", "Business Man", "Detective", "Mafia Man" };
+    private string[] npcList = { "Strangula", "Bullseye", "Madam Fortune", "Jack-Of-All-Trades", "Larry", "Spyglass", "Alan" };
 
     [SerializeField]
     private string playerCharacter;
@@ -18,34 +19,34 @@ public class Leaderboard : MonoBehaviour
     private int day = 1;
 
     [SerializeField]
-    private Text npcText1;
+    private TMP_Text npcText1;
     [SerializeField]
-    private Text npcText2;
+    private TMP_Text npcText2;
     [SerializeField]
-    private Text npcText3;
+    private TMP_Text npcText3;
     [SerializeField]
-    private Text npcText4;
+    private TMP_Text npcText4;
     [SerializeField]
-    private Text npcText5;
+    private TMP_Text npcText5;
     [SerializeField]
-    private Text npcText6;
+    private TMP_Text npcText6;
     [SerializeField]
-    private Text npcText7;
+    private TMP_Text npcText7;
 
     [SerializeField] 
-    private Text npcValue1;
+    private TMP_Text npcValue1;
     [SerializeField]
-    private Text npcValue2;
+    private TMP_Text npcValue2;
     [SerializeField]
-    private Text npcValue3;
+    private TMP_Text npcValue3;
     [SerializeField]
-    private Text npcValue4;
+    private TMP_Text npcValue4;
     [SerializeField]
-    private Text npcValue5;
+    private TMP_Text npcValue5;
     [SerializeField]
-    private Text npcValue6;
+    private TMP_Text npcValue6;
     [SerializeField]
-    private Text npcValue7;
+    private TMP_Text npcValue7;
 
     public bool updateLeaderboard = false;
 
@@ -54,25 +55,47 @@ public class Leaderboard : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        updateLeaderboard = false;
-        playerCharacter = "";
+        updateLeaderboard = true;
         Debug.Log(npcPool.Count);
-        day = 1;
+        SyncPlayerData();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(showingLeaderboard == false && updateLeaderboard == true)
+    if (showingLeaderboard == false && updateLeaderboard == true)
         {
+            SyncPlayerData();
             InitializeLeaderboard();
             ShowLeaderboard();
         }
     }
 
+    private void SyncPlayerData()
+    {
+        if (Playerinfo.Instance != null)
+        {
+            if (Playerinfo.Instance.selectedCharacter != null)
+            {
+                playerCharacter = Playerinfo.Instance.selectedCharacter.characterName;
+                if (playerCharacter == "Fortune")
+                    playerCharacter = "Madam Fortune";
+                else if (playerCharacter == "Jack")
+                    playerCharacter = "Jack-Of-All-Trades";
+            }
+
+            playerMoneyValue = Playerinfo.Instance.currentBalance;
+        }
+
+        if (CasinoTimeManager.Instance != null)
+        {
+            day = CasinoTimeManager.Instance.CurrentDay;
+        }
+    }
+
     public void InitializeLeaderboard()
     {
-        for(int i = 0; i < npcList.Length - 1; i++)
+        for (int i = 0; i < npcList.Length; i++)
         {
             if (!npcPool.ContainsKey(npcList[i])){
                 npcPool.Add(npcList[i], 0);

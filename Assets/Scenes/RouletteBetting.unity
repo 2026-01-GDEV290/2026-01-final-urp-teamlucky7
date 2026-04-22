@@ -605,7 +605,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 282, y: 130}
+  m_AnchoredPosition: {x: 65, y: 192}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &224375823
@@ -2303,7 +2303,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 283, y: -150}
+  m_AnchoredPosition: {x: -121, y: 193}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &962551430
@@ -5021,7 +5021,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb5780ae2ec5f5048b985af9f6fe3c7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerMoney: 100
   resultText: {fileID: 60533655}
   moneyText: {fileID: 2117909556}
   winText: {fileID: 224375823}
@@ -5276,7 +5275,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 286, y: -110}
+  m_AnchoredPosition: {x: -304, y: 194}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2045416717
