@@ -48,9 +48,13 @@ public class Playerinfo : MonoBehaviour
         currentBalance += amount;
     }
 
-    public void RemoveMoney(int amount)
+    public bool RemoveMoney(int amount)
     {
+        if (currentBalance < amount)
+            return false;
+
         currentBalance -= amount;
+        return true;
     }
 
 

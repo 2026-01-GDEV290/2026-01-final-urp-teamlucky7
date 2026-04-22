@@ -14,6 +14,7 @@ public class Character : MonoBehaviour
     public Sprite larrySprite;
     public Sprite spyglassSprite;
     public Sprite strangulaSprite;
+    public Sprite alanSprite;
 
     private void Awake()
     {
@@ -33,6 +34,7 @@ public class Character : MonoBehaviour
         characters.Add("Larry", new CharacterInfo(3, "Larry", larrySprite));
         characters.Add("Spyglass", new CharacterInfo(4, "Spyglass", spyglassSprite));
         characters.Add("Strangula", new CharacterInfo(5, "Strangula", strangulaSprite));
+        characters.Add("AlanSluggard", new CharacterInfo(6, "AlanSluggard", alanSprite));
     }
 
     public CharacterInfo GetCharacter(string characterKey)

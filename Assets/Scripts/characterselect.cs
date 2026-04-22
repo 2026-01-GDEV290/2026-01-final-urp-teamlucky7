@@ -28,4 +28,8 @@ public class characterselect : MonoBehaviour
  {
     Playerinfo.Instance.SetCharacterByName("Strangula");
  }
+     public void SelectAlan()
+ {
+    Playerinfo.Instance.SetCharacterByName("Alan Sluggard");
+ }
 }

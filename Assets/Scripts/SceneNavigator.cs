@@ -1,5 +1,5 @@
 using UnityEngine;
-using UnityEngine.SceneManagement; // Essential for scene control
+using UnityEngine.SceneManagement; 
 
 public class SceneNavigator : MonoBehaviour
 {
@@ -31,5 +31,13 @@ public class SceneNavigator : MonoBehaviour
         SceneManager.LoadScene(5);
         SceneManager.LoadScene(6, LoadSceneMode.Additive);
         SceneManager.LoadScene(1, LoadSceneMode.Additive);
+    }
+
+    public void LoadNextday(int sceneIndex)
+    {
+        
+        SceneManager.LoadScene(2);
+        SceneManager.LoadScene(1, LoadSceneMode.Additive);
+        CasinoTimeManager.Instance.AdvanceToNextDay();
     }
 }
