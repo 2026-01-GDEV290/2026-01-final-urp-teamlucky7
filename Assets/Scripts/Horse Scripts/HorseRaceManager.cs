@@ -1,42 +1,34 @@
 using UnityEngine;
-using System.Collections;
+using System.Collections.Generic;
 
 public class HorseRaceManager : MonoBehaviour
 {
-    public GameObject[] horses;
-    public Transform finishLine;
-    private bool isRacing = false;
+    // List to store horses in the order they finish
+    public List<Horse> finishers = new List<Horse>();
+    public int totalHorsesInRace = 4;
 
-    // Start race via button
-    public void StartRace()
+    public void RecordFinisher(Horse horse)
     {
-        StartCoroutine(RaceRoutine());
-    }
-
-    IEnumerator RaceRoutine()
-    {
-        isRacing = true;
-        while (isRacing)
+        if (!finishers.Contains(horse))
         {
-            for (int i = 0; i < horses.Length; i++)
-            {
-                // Random speed variance
-                float speed = Random.Range(1f, 5f);
-                horses[i].transform.Translate(Vector3.forward * speed * Time.deltaTime);
+            finishers.Add(horse);
+            Debug.Log($"{horse.stats.horseName} finished in position {finishers.Count}");
 
-                if (horses[i].transform.position.z >= finishLine.position.z)
-                {
-                    isRacing = false;
-                    Debug.Log("Winner: Horse " + i);
-                    // Call BettingManager.OnRaceEnd here
-                    break;
-                }
+            // If all horses have finished, calculate payouts
+            if (finishers.Count == totalHorsesInRace)
+            {
+                DeterminePayouts();
             }
-            yield return null;
         }
     }
-    internal static void hasFinished(HorseData horse)
+
+    void DeterminePayouts()
     {
-        throw new System.NotImplementedException();
+        // Example IDs for the top 3
+        int firstPlaceID = finishers[0].stats.horseID;
+        int secondPlaceID = finishers[1].stats.horseID;
+        int thirdPlaceID = finishers[2].stats.horseID;
+
+        // Pass these to your Betting System
     }
 }

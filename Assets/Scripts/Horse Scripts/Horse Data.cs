@@ -1,18 +1,12 @@
 using UnityEngine;
 
-public class HorseData : MonoBehaviour
+// This class holds the "stats" for each horse
+[System.Serializable]
+public class HorseData
 {
     public string horseName;
-    public int lastCheckpoint = 0;
-    public float distanceToNextCheckpoint = 0f;
-    public bool finished = false;
-    public float finishTime = 0f;
-
-    // Call this whenever a horse passes a checkpoint
-    public void UpdateProgress(int checkpointIndex, float distance)
-    {
-        lastCheckpoint = checkpointIndex;
-        distanceToNextCheckpoint = distance;
-    }
+    public int horseID;
+    public float baseSpeed;    // Average speed
+    public float stamina;     // Used to calculate late-race fatigue
+    public float winOdds;     // Multiplier for payouts (e.g., 3.5 for $3.50 return on $1)
 }
-
