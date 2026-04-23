@@ -24,10 +24,7 @@ public class CutsceneManager : MonoBehaviour
 
     public void Update()
     {
-        if (dialogue.getNextSentence() == true && showNextScene == false)
-        {
-            showNextScene = true;
-        }
+
     }
 
     public void CreateCutscene(Sprite[] scene, int[] trigger)
