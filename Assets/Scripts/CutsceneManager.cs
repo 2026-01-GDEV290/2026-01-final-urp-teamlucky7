@@ -27,7 +27,7 @@ public class CutsceneManager : MonoBehaviour
 
     }
 
-    public void CreateCutscene(Sprite[] scene, int[] trigger)
+    public void CreateCutscene(Image[] scene, int[] trigger)
     {
         Cutscene newCutscene = new Cutscene(scene, trigger);
     }
@@ -44,7 +44,7 @@ public class CutsceneManager : MonoBehaviour
         }
     }
 
-    public void ShowCutscene(int cutsceneNum)
+    public IEnumerator ShowCutscene(int cutsceneNum)
     {
         Debug.Log("Attempting to show cutscene " +  cutsceneNum);
         for (int i = 0; i < cutsceneArray.Length; i++)
@@ -52,7 +52,10 @@ public class CutsceneManager : MonoBehaviour
             if (cutsceneArray[i].enabled && i.Equals(cutsceneNum) == false)
             {
                 Debug.Log("Hiding Cutscene " + i);
-                cutsceneArray[i].enabled = false;
+                for (int j = 0; j < cutsceneArray[i].GetSceneArray().Length; j++)
+                {
+                    cutsceneArray[i].GetScene(j).enabled = false;
+                }
             } else if(i.Equals(cutsceneNum) == true)
             {
                 Debug.Log("Cutscene " + i + " is cutscene num");
@@ -79,10 +82,11 @@ public class CutsceneManager : MonoBehaviour
                         cutsceneArray[cutsceneNum].ShowScene(sceneNum);
                     }
                     
+                } else if(dialogue.GetCurrentSentenceNum().Equals(cutsceneArray[cutsceneNum].GetTrigger()[i]))
+                {
+                    Debug.Log("Show next scene.");
+                    cutsceneArray[cutsceneNum].NextScene();
                 }
-
-                Debug.Log("Show next scene.");
-                cutsceneArray[cutsceneNum].NextScene();
             }
         }
     }

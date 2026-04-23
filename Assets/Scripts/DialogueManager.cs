@@ -20,6 +20,7 @@ public class DialogueManager : MonoBehaviour
         sentences = new Queue<string>();
         nextSentence = false;
         totalSentences = 0;
+        currentSentence = 0;
     }
 
     public void StartDialogue (Dialogue dialogue)

@@ -5,25 +5,23 @@ using UnityEngine.UI;
 public class Cutscene : MonoBehaviour
 {
     [SerializeField]
-    private Sprite[] scenes;
+    private Image[] scenes;
     [SerializeField]
     private int[] triggerOnSentenceNum;
-    [SerializeField]
-    private SpriteRenderer[] spriteRenderers;
 
-    public Cutscene(Sprite[] setscenes, int[] settrigger)
+    public Cutscene(Image[] setscenes, int[] settrigger)
     {
         this.triggerOnSentenceNum = settrigger;
         this.scenes = setscenes;
     }
 
-    public Sprite[] GetSceneArray()
+    public Image[] GetSceneArray()
     {
         return scenes;
     }
 
     //returns a specific scene @ iterator location
-    public Sprite GetScene(int iterator)
+    public Image GetScene(int iterator)
     {
         if (scenes != null)
         {
@@ -43,7 +41,7 @@ public class Cutscene : MonoBehaviour
         {
             for(int i = 0; i < scenes.Length - 1; i++)
             {
-                if (spriteRenderers[i].enabled == true)
+                if (scenes[i].enabled == true)
                 {
                     returnIterator = i;
                     break;
@@ -60,7 +58,7 @@ public class Cutscene : MonoBehaviour
     }
 
     //sets scene @ specific iterator location
-    public void SetScene(int iterator, Sprite scene)
+    public void SetScene(int iterator, Image scene)
     {
         if (scenes != null)
         {
@@ -70,12 +68,12 @@ public class Cutscene : MonoBehaviour
 
     public void ShowScene(int sceneNum)
     {
-        spriteRenderers[sceneNum].enabled = true;
+        scenes[sceneNum].enabled = true;
     }
 
     public bool IsHidden(int sceneNum)
     {
-        return spriteRenderers[sceneNum].enabled;
+        return scenes[sceneNum].enabled;
     }
 
     //sets the trigger for the cutscene
@@ -92,10 +90,10 @@ public class Cutscene : MonoBehaviour
     public void NextScene()
     {
         int currentScene = GetSceneIterator();
-        spriteRenderers[currentScene].enabled = false;
+        scenes[currentScene].enabled = false;
         if(currentScene + 1 < scenes.Length)
         {
-            spriteRenderers[currentScene + 1].enabled = true;
+            scenes[currentScene + 1].enabled = true;
         }
     }
 }
