@@ -1,39 +1,32 @@
 using UnityEngine;
+using TMPro;
 
 public class FinishLine : MonoBehaviour
 {
-    public int playerBetHorseID; // Set this when the player places a bet
-    public float betAmount;
+    public TextMeshProUGUI winText;
+    public BettingManager bettingManager; // Drag BettingManager here
     private bool raceOver = false;
 
-    // Triggered when a horse hits the finish line
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        if (raceOver) return; // Only care about the first winner
-
-        // Get the Horse script from the object that hit the finish line
-        Horse horse = other.GetComponent<Horse>();
-
-        if (horse != null)
+        if (!raceOver && other.CompareTag("Horse"))
         {
             raceOver = true;
-            CheckWinner(horse.horseID);
-        }
-    }
+            string winner = other.gameObject.name;
+            winText.gameObject.SetActive(true);
 
-    void CheckWinner(int winningID)
-    {
-        Debug.Log("Horse " + winningID + " won the race!");
+            // Check if player picked this horse
+            if (winner == bettingManager.pickedHorseName)
+            {
+                winText.text = winner + " Won! You won $" + (bettingManager.currentBetAmount * 2);
+                bettingManager.AddWinnings(2f); // 2x Payout for a win
+            }
+            else
+            {
+                winText.text = winner + " Won. You lost your bet.";
+            }
 
-        if (winningID == playerBetHorseID)
-        {
-            float payout = betAmount * 2; // Simple 2x payout logic
-            Debug.Log("You Win! Payout: $" + payout);
-            // Add money to player's wallet here
-        }
-        else
-        {
-            Debug.Log("You Lose!");
+            FindObjectOfType<RaceManager>().StopAllHorses();
         }
     }
 }

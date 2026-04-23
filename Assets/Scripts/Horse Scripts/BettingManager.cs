@@ -1,60 +1,48 @@
-using System;
-using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class BettingManager : MonoBehaviour
 {
-    public float playerBalance = 1000f;
+    public float walletBalance = 1000f;
+    public TMP_InputField betInputField;
+    public TMP_Dropdown horseDropdown; // Drag your Dropdown here
+    public TextMeshProUGUI walletDisplay;
 
-    // Struct to hold a single bet's details
-    [System.Serializable]
-    public struct ActiveBet
+    [HideInInspector] public float currentBetAmount;
+    [HideInInspector] public string pickedHorseName;
+
+    void Start()
     {
-        public int horseID;
-        public float amount;
-        public float odds; // e.g., 5.0 for 5-to-1
+        UpdateWalletUI();
     }
 
-    private List<ActiveBet> activeBets = new List<ActiveBet>();
-
-    // 1. Place a bet
-    public void PlaceBet(int horseID, float amount, float odds)
+    public void UpdateWalletUI()
     {
-        if (amount <= playerBalance)
-        {
-            playerBalance -= amount;
-            activeBets.Add(new ActiveBet { horseID = horseID, amount = amount, odds = odds });
-            Debug.Log($"Bet placed on Horse {horseID}: ${amount} at {odds}:1");
-        }
-        else
-        {
-            Debug.Log("Insufficient funds!");
-        }
+        walletDisplay.text = "Balance: $" + walletBalance;
     }
 
-    // 2. Process results when the race ends
-    public void ProcessRaceResults(int winningHorseID)
+    public bool PlaceBet()
     {
-        float totalWinnings = 0f;
+        // 1. Get the horse name currently selected in the dropdown
+        pickedHorseName = horseDropdown.options[horseDropdown.value].text;
 
-        foreach (var bet in activeBets)
+        // 2. Validate the money
+        if (float.TryParse(betInputField.text, out float amount))
         {
-            if (bet.horseID == winningHorseID)
+            if (amount > 0 && amount <= walletBalance)
             {
-                // Return original bet + profit (amount * odds)
-                float payout = bet.amount * bet.odds;
-                totalWinnings += payout;
-                Debug.Log($"Winner! Horse {winningHorseID} paid out ${payout}");
+                currentBetAmount = amount;
+                walletBalance -= amount;
+                UpdateWalletUI();
+                return true;
             }
         }
-
-        playerBalance += totalWinnings;
-        activeBets.Clear(); // Reset for next race
-        Debug.Log($"Race Over. New Balance: ${playerBalance}");
+        return false;
     }
 
-    internal void OnRaceFinished(int v)
+    public void AddWinnings(float multiplier)
     {
-        throw new NotImplementedException();
+        walletBalance += (currentBetAmount * multiplier);
+        UpdateWalletUI();
     }
 }

@@ -2,22 +2,33 @@ using UnityEngine;
 
 public class HorseMovement : MonoBehaviour
 {
-    public Transform[] waypoints;
-    private int currentWaypoint = 0;
-    public float speed = 10f;
+    public float minSpeed = 5f;
+    public float maxSpeed = 10f;
+    private float currentSpeed;
+    private bool isRacing = false;
+
+    // Call this from your UI Button to start the race
+    public void StartRace()
+    {
+        isRacing = true;
+        // Randomize speed at the start of the race
+        currentSpeed = Random.Range(minSpeed, maxSpeed);
+    }
 
     void Update()
     {
-        if (currentWaypoint >= waypoints.Length) return;
-
-        // Move towards current waypoint
-        Vector3 direction = waypoints[currentWaypoint].position - transform.position;
-        transform.position += direction.normalized * speed * Time.deltaTime;
-
-        // Switch to next waypoint when close
-        if (Vector3.Distance(transform.position, waypoints[currentWaypoint].position) < 2f)
+        if (isRacing)
         {
-            currentWaypoint++;
+            // Move the horse forward relative to its own Z-axis
+            transform.Translate(Vector3.right * currentSpeed * Time.deltaTime);
+
+            // Optional: Randomize speed slightly during the race for realism
+            if (Random.value > 0.98f)
+            {
+                currentSpeed = Random.Range(minSpeed, maxSpeed);
+            }
         }
     }
+
+    public void StopRace() => isRacing = false;
 }

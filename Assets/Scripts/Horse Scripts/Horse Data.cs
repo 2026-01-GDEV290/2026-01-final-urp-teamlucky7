@@ -2,7 +2,7 @@ using UnityEngine;
 
 // This class holds the "stats" for each horse
 [System.Serializable]
-public class HorseData
+public class HorseData : MonoBehaviour
 {
     public string horseName;
     public int horseID;
