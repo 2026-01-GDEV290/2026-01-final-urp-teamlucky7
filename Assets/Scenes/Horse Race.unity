@@ -1294,7 +1294,7 @@ GameObject:
   - component: {fileID: 367372439}
   m_Layer: 0
   m_Name: horse_red_team_0
-  m_TagString: Untagged
+  m_TagString: Horse
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2441,7 +2441,7 @@ GameObject:
   - component: {fileID: 659142590}
   m_Layer: 0
   m_Name: horse_yellow_team_0
-  m_TagString: Untagged
+  m_TagString: Horse
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3025,10 +3025,10 @@ MonoBehaviour:
   - {fileID: 659142588}
   - {fileID: 1263645499}
   - {fileID: 367372437}
-  bettingManager: {fileID: 0}
+  bettingManager: {fileID: 1487419939}
   startPositions: []
-  restartButton: {fileID: 0}
-  winText: {fileID: 0}
+  restartButton: {fileID: 846093149}
+  winText: {fileID: 1704450844}
 --- !u!1 &846093149
 GameObject:
   m_ObjectHideFlags: 0
@@ -4015,7 +4015,7 @@ GameObject:
   - component: {fileID: 1263645501}
   m_Layer: 0
   m_Name: horse_green_team_0
-  m_TagString: Untagged
+  m_TagString: Horse
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4639,7 +4639,7 @@ GameObject:
   - component: {fileID: 1342903900}
   m_Layer: 0
   m_Name: horse_blue_team_0
-  m_TagString: Untagged
+  m_TagString: Horse
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5263,9 +5263,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   walletBalance: 1000
-  betInputField: {fileID: 0}
-  horseDropdown: {fileID: 0}
-  walletDisplay: {fileID: 0}
+  betInputField: {fileID: 651452993}
+  horseDropdown: {fileID: 1855335931}
+  walletDisplay: {fileID: 1019729143}
   currentBetAmount: 0
   pickedHorseName: 
 --- !u!4 &1487419940

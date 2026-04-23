@@ -54,10 +54,8 @@ public class RouletteRoundBridge : MonoBehaviour
         }
 
     
-        if (!CasinoTimeManager.Instance.CanSpendTime(rouletteTimeCost))
+        if (!GameProcessManager.Instance.TrySpendTime(rouletteTimeCost))
         {
-            CasinoTimeManager.Instance.AdvanceToNextDay();
-            Debug.Log("Not enough time, advancing to next day.");
             return;
         }
 

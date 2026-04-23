@@ -157,7 +157,7 @@ MonoBehaviour:
   larrySprite: {fileID: 21300000, guid: 3118f46904e161c4e929d1fd45580c2d, type: 3}
   spyglassSprite: {fileID: 21300000, guid: 52aa5866e4c2d014fa77ab218e345285, type: 3}
   strangulaSprite: {fileID: 21300000, guid: 3ca6cebb4d9796a448183f0b2b7ca3a6, type: 3}
-  alanSprite: {fileID: 0}
+  alanSprite: {fileID: 21300000, guid: b6586a002a1393e4b98364011affd704, type: 3}
 --- !u!4 &24616783
 Transform:
   m_ObjectHideFlags: 0
