@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -15,12 +16,10 @@ public class CutsceneManager : MonoBehaviour
     [SerializeField]
     private DialogueManager dialogue;
 
-    [SerializeField]
-    private DialogueTrigger dialogueTrigger;
 
     public void Start()
     {
-        dialogueTrigger.TriggerDialogue();
+
     }
 
     public void Update()
@@ -31,12 +30,12 @@ public class CutsceneManager : MonoBehaviour
         }
     }
 
-    public void createCutscene(Image[] scene, GameObject trigger)
+    public void CreateCutscene(Sprite[] scene, int[] trigger)
     {
         Cutscene newCutscene = new Cutscene(scene, trigger);
     }
 
-    public void addCutscene(Cutscene addedScene)
+    public void AddCutscene(Cutscene addedScene)
     {
         for(int i = 0; i < cutsceneArray.Length - 1; i++)
         {
@@ -48,43 +47,65 @@ public class CutsceneManager : MonoBehaviour
         }
     }
 
-    public void showCutscene(int iterator)
+    public void ShowCutscene(int cutsceneNum)
     {
-        for (int i = 0; i < cutsceneArray.Length - 1; i++)
+        Debug.Log("Attempting to show cutscene " +  cutsceneNum);
+        for (int i = 0; i < cutsceneArray.Length; i++)
         {
-            if (cutsceneArray[i].isActiveAndEnabled && i.Equals(iterator) == false)
+            if (cutsceneArray[i].enabled && i.Equals(cutsceneNum) == false)
             {
+                Debug.Log("Hiding Cutscene " + i);
                 cutsceneArray[i].enabled = false;
+            } else if(i.Equals(cutsceneNum) == true)
+            {
+                Debug.Log("Cutscene " + i + " is cutscene num");
+            }
+            else 
+            {
+                Debug.Log("Cutscene " + i + " is already hidden.");
             }
         }
 
-        if (cutsceneArray[iterator].isActiveAndEnabled == false)
+        int sceneNum = 0;
+
+        if (cutsceneArray[cutsceneNum].enabled == true)
         {
-            cutsceneArray[iterator].enabled = true;
-        }
-    }
-
-    public void SetCutsceneTrigger(int iterator, GameObject settrigger)
-    {
-
-    }
-
-    public void showCutsceneInOrder(int[] index)
-    {
-        for(int i = 0; i < index.Length; i++)
-        {
-            while (showNextScene == false)
+            Debug.Log("Cutscene Active and Enabled");
+            for (int i = 0; i < cutsceneArray[cutsceneNum].GetSceneArray().Length; i++) //iterate through the specified cutscene to allow all cutscenes to be enabled
             {
-                cutsceneArray[i].GetScene(i).enabled = true;
-                if(dialogue.getNextSentence() == true)
+                Debug.Log("Scene " + i);
+                if (!dialogue.GetCurrentSentenceNum().Equals(cutsceneArray[cutsceneNum].GetTrigger()[i])) //check to see if the current number sentence matches with the int to trigger the next scene
                 {
-                    cutsceneArray[i].enabled = false;
-                    showNextScene = true;
+                    if (cutsceneArray[cutsceneNum].IsHidden(sceneNum))
+                    {
+                        Debug.Log("Cutscene " + cutsceneNum + " hidden. Showing Cutscene " + cutsceneNum);
+                        cutsceneArray[cutsceneNum].ShowScene(sceneNum);
+                    }
+                    
                 }
-            }
-            if (showNextScene == true) {
-                cutsceneArray[i].enabled = false;
+
+                Debug.Log("Show next scene.");
+                cutsceneArray[cutsceneNum].NextScene();
             }
         }
     }
+
+    //public void ShowCutsceneInOrder(int[] index)
+    //{
+    //    for(int i = 0; i < index.Length; i++)
+    //    {
+    //        while (showNextScene == false)
+    //        {
+    //            cutsceneArray[i].GetScene(i).enabled = true;
+    //            if (dialogue.GetCurrentSentenceNum().Equals(cutsceneArray[]) )
+    //            {
+    //                cutsceneArray[i].enabled = false;
+    //                showNextScene = true;
+    //            }
+    //        }
+    //        if (showNextScene == true) {
+    //            cutsceneArray[i].enabled = false;
+    //        }
+    //    }
+    //}
 }

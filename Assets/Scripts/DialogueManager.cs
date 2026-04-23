@@ -9,6 +9,8 @@ public class DialogueManager : MonoBehaviour
     public Text nameText;
     public Text dialogueText;
     public bool nextSentence;
+    private int totalSentences;
+    private int currentSentence;
 
     private Queue<string> sentences;
 
@@ -17,11 +19,14 @@ public class DialogueManager : MonoBehaviour
     {
         sentences = new Queue<string>();
         nextSentence = false;
+        totalSentences = 0;
     }
 
     public void StartDialogue (Dialogue dialogue)
     {
         Debug.Log("Starting Conversation with " + dialogue.name);
+        nameText.enabled = true;
+        dialogueText.enabled = true;
 
         nameText.text = dialogue.name;
 
@@ -30,6 +35,7 @@ public class DialogueManager : MonoBehaviour
         foreach (string sentence in dialogue.sentences)
         {
             sentences.Enqueue(sentence);
+            totalSentences++;
         }
 
         DisplayNextSentence();
@@ -46,12 +52,32 @@ public class DialogueManager : MonoBehaviour
 
         nextSentence = true;
         string sentence = sentences.Dequeue();
+        currentSentence++;
         dialogueText.text = sentence;
     }
 
     public void EndDialogue ()
     {
+        totalSentences = 0;
+        currentSentence = 0;
+        nameText.enabled = false;
+        dialogueText.enabled = false;
         Debug.Log("End of Conversation");
+    }
+
+    public int GetCurrentSentenceNum()
+    {
+        return currentSentence;
+    }
+
+    public int GetTotalSentences()
+    {
+        return totalSentences;
+    }
+
+    public Queue<string> GetSentenceQueue()
+    {
+        return sentences;
     }
 
     public bool getNextSentence()
