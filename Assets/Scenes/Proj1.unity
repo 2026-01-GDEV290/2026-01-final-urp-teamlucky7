@@ -387,6 +387,8 @@ MonoBehaviour:
     sentences:
     - its a me mario
     - wahoo
+    - why'd you do that mario
+    - i dunno
 --- !u!114 &436124372
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -402,7 +404,7 @@ MonoBehaviour:
   scenes:
   - {fileID: 1897236893}
   - {fileID: 1185956928}
-  triggerOnSentenceNum: 0000000001000000
+  triggerOnSentenceNum: 0200000004000000
 --- !u!114 &436124373
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1661,7 +1663,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 436124369}
         m_TargetAssemblyTypeName: CutsceneManager, Assembly-CSharp
-        m_MethodName: ShowCutscene
+        m_MethodName: PlayCutscene
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

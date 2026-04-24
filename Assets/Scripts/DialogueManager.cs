@@ -20,7 +20,7 @@ public class DialogueManager : MonoBehaviour
         sentences = new Queue<string>();
         nextSentence = false;
         totalSentences = 0;
-        currentSentence = 0;
+        currentSentence = -1;
     }
 
     public void StartDialogue (Dialogue dialogue)
@@ -39,6 +39,8 @@ public class DialogueManager : MonoBehaviour
             totalSentences++;
         }
 
+        Debug.Log("Current Sentence: " + GetCurrentSentenceNum());
+
         DisplayNextSentence();
         nextSentence = false;
     }
@@ -54,6 +56,7 @@ public class DialogueManager : MonoBehaviour
         nextSentence = true;
         string sentence = sentences.Dequeue();
         currentSentence++;
+        Debug.Log("Current Sentence: " + GetCurrentSentenceNum());
         dialogueText.text = sentence;
     }
 

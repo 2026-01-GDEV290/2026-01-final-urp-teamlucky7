@@ -44,6 +44,11 @@ public class CutsceneManager : MonoBehaviour
         }
     }
 
+    public void PlayCutscene(int cutsceneNum)
+    {
+        StartCoroutine("ShowCutscene", cutsceneNum);
+    }
+
     public IEnumerator ShowCutscene(int cutsceneNum)
     {
         Debug.Log("Attempting to show cutscene " +  cutsceneNum);
@@ -71,7 +76,15 @@ public class CutsceneManager : MonoBehaviour
         if (cutsceneArray[cutsceneNum].enabled == true)
         {
             Debug.Log("Cutscene Active and Enabled");
-            for (int i = 0; i < cutsceneArray[cutsceneNum].GetSceneArray().Length; i++) //iterate through the specified cutscene to allow all cutscenes to be enabled
+            for (int i = 0; i < cutsceneArray[cutsceneNum].GetSceneArray().Length; i++) //iterate through the specified cutscene to hide all but the first scene
+            {
+                if(i > 0)
+                {
+                    cutsceneArray[cutsceneNum].GetScene(i).enabled = false;
+                }
+            }
+
+                for (int i = 0; i < cutsceneArray[cutsceneNum].GetSceneArray().Length; i++) //iterate through the specified cutscene to allow all cutscenes to be enabled, in order
             {
                 Debug.Log("Scene " + i);
                 if (!dialogue.GetCurrentSentenceNum().Equals(cutsceneArray[cutsceneNum].GetTrigger()[i])) //check to see if the current number sentence matches with the int to trigger the next scene
@@ -82,11 +95,10 @@ public class CutsceneManager : MonoBehaviour
                         cutsceneArray[cutsceneNum].ShowScene(sceneNum);
                     }
                     
-                } else if(dialogue.GetCurrentSentenceNum().Equals(cutsceneArray[cutsceneNum].GetTrigger()[i]))
-                {
-                    Debug.Log("Show next scene.");
-                    cutsceneArray[cutsceneNum].NextScene();
-                }
+                } 
+                yield return new WaitUntil(() => dialogue.GetCurrentSentenceNum().Equals(cutsceneArray[cutsceneNum].GetTrigger()[i]));
+                Debug.Log("Show next scene.");
+                cutsceneArray[cutsceneNum].NextScene();
             }
         }
     }
