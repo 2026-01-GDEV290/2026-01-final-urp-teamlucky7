@@ -124,4 +124,14 @@ public class DialogueManager : MonoBehaviour
     {
         return nextSentence;
     }
+
+    public DialogueTrigger[] GetDialogueTriggersArray()
+    {
+        return dialogueTriggers;
+    }
+
+    public DialogueTrigger GetDialogueTrigger(int dialogueTriggerNum)
+    {
+        return dialogueTriggers[dialogueTriggerNum];
+    }
 }

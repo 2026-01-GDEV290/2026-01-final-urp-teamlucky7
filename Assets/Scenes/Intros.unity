@@ -396,7 +396,8 @@ MonoBehaviour:
   continueButton: {fileID: 924809791}
   nextSentence: 0
   dialogueTriggers:
-  - {fileID: 914846257}
+  - {fileID: 914846260}
+  - {fileID: 914846256}
   - {fileID: 914846256}
 --- !u!4 &492188575
 Transform:
@@ -938,12 +939,13 @@ GameObject:
   m_Component:
   - component: {fileID: 914846262}
   - component: {fileID: 914846261}
-  - component: {fileID: 914846257}
-  - component: {fileID: 914846256}
-  - component: {fileID: 914846260}
   - component: {fileID: 914846255}
+  - component: {fileID: 914846260}
   - component: {fileID: 914846259}
+  - component: {fileID: 914846257}
   - component: {fileID: 914846258}
+  - component: {fileID: 914846256}
+  - component: {fileID: 914846263}
   m_Layer: 0
   m_Name: CutsceneManager
   m_TagString: Untagged
@@ -964,11 +966,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scenes:
-  - {fileID: 969986745}
   - {fileID: 1976733870}
   - {fileID: 1126832302}
   - {fileID: 602785979}
-  triggerOnSentenceNum: 0200000006000000090000000a000000
+  triggerOnSentenceNum: 0a00000017000000
 --- !u!114 &914846256
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1085,9 +1086,72 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogue:
-    name: 
-    nameExtra: []
-    sentences: []
+    name: Narrator
+    nameExtra:
+    - 
+    - 
+    - Bullseye
+    - Narrator
+    - Merc 1
+    - Merc 2
+    - Bullseye
+    - 
+    - Merc 3
+    - Merc 1
+    - Merc 2
+    - Merc 3
+    - Bullseye
+    - Merc 3
+    - 
+    - 
+    - 
+    - 
+    - Narrator
+    - 
+    - 
+    - 
+    - Bullseye
+    - 
+    - 
+    - 
+    sentences:
+    - 'Here we have a group of ragtag mercenaries, bunched up in the center of an
+      Astral Bar, smack dab in the center of the galaxy. '
+    - "Ha, any one of these gremlins could\u2019ve made an attempt at my life. Wouldn\u2019t
+      be the first!"
+    - "But if there\u2019s one thing I know about these mercenary types, it\u2019s
+      that they, just like anyone else\u2026"
+    - "Hey boys\u2019 en girls, look at that! Gleebnar of all people is giving up
+      his fortune!"
+    - "\u2026can\u2019t resist the call of money!"
+    - "No way it isn\u2019t a scam though\u2026"
+    - "Yea, boss! You can never trust these kinds o\u2019 quick talking, money grubbin\u2019
+      businessgoiys! Look where the last one left us."
+    - "Oof, you\u2019re right. With work getting more and more automated, it\u2019s
+      tough for our little band to keep goin\u2019 like this\u2026 "
+    - "Treasury, how\u2019s our lined up jobs looking?"
+    - "Bad News. Our current jobs ain\u2019t enough to recoup these losses."
+    - WHAT!?
+    - YOU SERIOUS DOC!?
+    - "I wouldn\u2019t be in charge of this if I weren\u2019t, though."
+    - Treasurer, couldja explain?
+    - Sure.
+    - "Long story short, between that wise guy running off with the majority of our
+      savings, and the amount of booze we\u2019ve collectively downed\u2026"
+    - ...rising transportation costs...
+    - "and the amount of booze we\u2019ve collectively downed\u2026"
+    - "We\u2019d need a miracle to get us outta this."
+    - A miracle worker, huh? I like that.
+    - "Catchy, rolls off the tongue and makes me sound real good. Which means it\u2019ll
+      be even easier to advertise!"
+    - Imagine the riches piling up when they give money to the miracle worker that
+      saved their asses from debt!
+    - "I\u2019ve got my eye on you, so you better not disappoint."
+    - Then daresay, I better try my luck with what I got left!
+    - We got big dreams, the lot of us..
+    - " We still need a base, a ship with better rocket thrusters, money for ya sister\u2019s
+      treatment, money for my nephews and nieces\u2019 education\u2026"
+    - "We can\u2019t give up now!"
 --- !u!114 &914846261
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1103,7 +1167,7 @@ MonoBehaviour:
   cutsceneArray:
   - {fileID: 914846255}
   - {fileID: 914846259}
-  - {fileID: 914846259}
+  - {fileID: 914846258}
   showNextScene: 0
   dialogue: {fileID: 492188574}
 --- !u!4 &914846262
@@ -1121,6 +1185,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &914846263
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 914846254}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c7ad0bc253bbbc4191b1733a9d50421, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueManager: {fileID: 492188574}
+  cutsceneManager: {fileID: 914846261}
+  testPlayer: Bullseye
 --- !u!1 &924809789
 GameObject:
   m_ObjectHideFlags: 0
