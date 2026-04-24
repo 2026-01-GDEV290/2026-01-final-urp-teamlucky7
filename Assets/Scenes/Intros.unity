@@ -397,7 +397,7 @@ MonoBehaviour:
   nextSentence: 0
   dialogueTriggers:
   - {fileID: 914846260}
-  - {fileID: 914846256}
+  - {fileID: 914846257}
   - {fileID: 914846256}
 --- !u!4 &492188575
 Transform:
@@ -983,9 +983,83 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogue:
-    name: Gleebnar
-    nameExtra: []
-    sentences: []
+    name: Spyglass
+    nameExtra:
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - Narrator
+    - 
+    - 
+    - Spyglass
+    - Narrator
+    - Spyglass
+    - 
+    - Narrator
+    - Spyglass
+    - 
+    - Narrator
+    - Spyglass
+    - Narrator
+    - 
+    - 
+    - 
+    - Spyglass
+    - Narrator
+    - Spyglass
+    - 
+    - Narrator
+    sentences:
+    - 'I woke up alone, cold, dirty, on the wrong side of the gallows. A small little
+      creature, just trying to live their life. '
+    - I reached out to the cold world only to have my hand slapped away. But I had
+      a purpose, and I was going to see it through to the end.
+    - "\u2026only problem was, I needed to find out what that purpose was."
+    - "I may have, er, overembellished my current situation a little, because I was
+      nowhere near the side of the road, so to speak. I wasn\u2019t even outside"
+    - No - I was inside of some kind of crazy contraption of astronomical heights.
+    - The grey lights everywhere, shining in my face and almost blinding me, and
+      oh the horrible, horrible noise.
+    - It was enough to make a humble little jerboa such as myself run and hide in
+      a corner.
+    - 'It was the bottom of the barrell, and while I may have been scraping it, I
+      am no coward.
+
+'
+    - "The little pest speaks with so much conviction you\u2019d have thought they
+      knew what they were doing! Hahaha!"
+    - "But maybe they can prove it; coming into my casino, there\u2019s only one
+      way to get the big cheese - win, and win big!"
+    - Those ugly, bulging eyes of theirs might even help them out here, HA!
+    - I turned to the source of the voice, to no avail - nobody was there, but I
+      knew someone was speaking.
+    - "\u2026what the-"
+    - "Hey! I\u2019m trying to think here! And I don\u2019t appreciate the unnecessary
+      comments about my appearance! "
+    - You make me sound unflattering.
+    - "Oh, I don\u2019t need to make you SOUND like anything."
+    - '*groan*'
+    - "Look, I\u2019m a professional. The real deal. If you don\u2019t want to end
+      up on the wrong side of the stage when I\u2019m only trying to help\u2013"
+    - "Bah! A professional they say! Priceless! Tell me, rodent, if you\u2019re a
+      professional, then what are you a professional of?"
+    - "I-...well, you see, I\u2019m-...well that isn't..!"
+    - "CAN\u2019T EVEN COME UP WITH SOMETHING AS SIMPLE AS THAT, BAHAHA!"
+    - "I\u2019ll tell you what. \r\n"
+    - "I\u2019m sure that if you win all of these games here and score as high as
+      you can, you might just remember what your little job is."
+    - "How\u2019s that sound?"
+    - "Fine. My new purpose is to\u2026find my purpose. Fair enough.\r"
+    - "Fantastic.\r"
+    - "What the ugly sounding voice in my head doesn\u2019t realize is that I\u2019m
+      playing him like a fiddle. \r"
+    - "I\u2019ll play his game - but he has to play mine, too. I\u2019ll find my
+      purpose. Then, I find him.\r"
+    - "What a nutjob.\r"
 --- !u!114 &914846257
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1001,41 +1075,53 @@ MonoBehaviour:
   dialogue:
     name: Narrator
     nameExtra:
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - Jack
+    - 
+    - 
+    - 
     - Narrator
-    - Gleebnar
-    - 
-    - Narrator
-    - Gleebnar
     - 
     - 
-    - 
+    - Jack
     - 
     - 
     - Narrator
-    - 
-    - 
-    - 
     sentences:
-    - 'You wake up to the sound of TV Static blaring throughout your room. You may
-      have just woken up, but you swear you could make out a voice in the static. '
-    - "Curious, you listen closer, but the voice is intelligible. Ah. Oh, well. You
-      reach down to grab your remote and turn the television off, when\u2026"
-    - "\u2026THAT\u2019S RIGHT, EVEN YOU CAN WIN BIG! BIG MONEY! CASH, DOUGH, MOOLAH,
-      BIGGER THAN YOU\u2019VE EVER WON BEFORE! "
-    - THE ENTIRE GLEEBNAR FORTUNE, ALL YOURS TO KEEP! BUT IT COMES AT A COST!
-    - "Well, if the giant, booming voice that was now blasting out of your TV at
-      full volume wasn\u2019t enough to keep your attention\u2026that sure did."
-    - "PAY REAL CLOSE ATTENTION, OR YOU\u2019LL LOSE OUT GUARANTEED. "
-    - 'I, TOM GLEEBNAR, AM HOSTING A FULL WEEK-LONG GAMBLING EXTRAORDINAIRE,  '
-    - THE LIKES OF WHICH UNSEEN IN ANY CORNER OF THIS SIDE OF THE GALAXY!
-    - 'SEVEN DAYS, SEVEN CHANCES TO GET THE HIGHEST SCORE AMONGST ALL OF YOUR PEERS! '
-    - 'ONE VERY LUCKY CONTESTANT WILL WIN IT ALL AS THE HIGHEST SCORE AMONG YOU, '
-    - "NOT ONLY WINNING THE GLEEBNAR FORTUNE\u2026BUT THE RIGHTS TO THE CASINO ITSELF
-      AS WELL!"
-    - 'You feel yourself waking up from the anticipation.  '
-    - The Gleebnar Fortune, on top of the rights to the notorious Lucky 7 casino?
-      This could be your chance to get everything you deserve!
-    - "You pack your bags, gather up your courage, and head to the\u2026"
+    - "New Andromeda City\u2019s full of all sorts of people. . "
+    - "From the big guys running Wall Station, to the little guys always buildin\u2019
+      something new and everyone in between, ridin\u2019 on the space tram"
+    - But one rabbit always runs unnoticed..
+    - Enter Jack, a little nobody tucked away in a run-down alleyway, 25 years and
+      counting.
+    - "Some folks here like to call him Jumpin\u2019 Jack, on account of his quick
+      reflexes..."
+    - "and the fact no cop\u2019s managed to catch him red-handed with a fistful
+      of some shmuck\u2019s cash."
+    - "It\u2019s the only way to survive in a place like this, when you\u2019ve got
+      nothing."
+    - "Some rich asshole\u2019s getting a crazy tax break with this one, huh?"
+    - Why else would anyone throw away an entire fortune?
+    - '[cough]'
+    - "I bet he has investments tucked away somewhere. I bet he\u2019ll put it down
+      as a charitable donation."
+    - "That\u2019s some fightin\u2019 words, Jackass! Mind your business when it
+      comes to mine!"
+    - "But if you\u2019re somebody in the know, you might hear a different name for
+      this lanky lad.\r\n"
+    - Jack-of-all trades, a master of none- but more skilled than a master of one.
+    - 'All these guys are the exact same. But who cares.. So long as I can get a
+      piece of that pie.
+
+'
+    - "I\u2019ve got nothing to lose-"
+    - "After all, I\u2019ll win. I\u2019ll swipe it all right under their noses."
+    - "Well, let\u2019s see about all that.."
 --- !u!114 &914846258
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1049,12 +1135,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scenes:
-  - {fileID: 969986745}
   - {fileID: 842630050}
   - {fileID: 1317282890}
   - {fileID: 1724280521}
   - {fileID: 956629156}
-  triggerOnSentenceNum: 00000000000000000000000000000000
+  triggerOnSentenceNum: 0d0000001100000013000000
 --- !u!114 &914846259
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1072,7 +1157,7 @@ MonoBehaviour:
   - {fileID: 428125014}
   - {fileID: 1984784307}
   - {fileID: 598246743}
-  triggerOnSentenceNum: 000000000000000000000000
+  triggerOnSentenceNum: 030000000700000010000000
 --- !u!114 &914846260
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1199,7 +1284,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueManager: {fileID: 492188574}
   cutsceneManager: {fileID: 914846261}
-  testPlayer: Bullseye
+  testPlayer: Spyglass
 --- !u!1 &924809789
 GameObject:
   m_ObjectHideFlags: 0
@@ -2088,8 +2173,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -32.7259, y: -14.798}
-  m_SizeDelta: {x: 216.1483, y: 51.196}
+  m_AnchoredPosition: {x: -20.1267, y: -14.798}
+  m_SizeDelta: {x: 241.3467, y: 51.196}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1976733869
 GameObject:
