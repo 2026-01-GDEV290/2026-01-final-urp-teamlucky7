@@ -7,6 +7,7 @@ public class DialogueManager : MonoBehaviour
 {
 
     public Text nameText;
+    public Text[] changeNameArray;
     public Text dialogueText;
     public bool nextSentence;
     private int totalSentences;
@@ -30,6 +31,10 @@ public class DialogueManager : MonoBehaviour
         dialogueText.enabled = true;
 
         nameText.text = dialogue.name;
+        for (int i = 0; i < changeNameArray.Length; i++)
+        {
+            changeNameArray[i].text = dialogue.nameExtra[i];
+        }
 
         sentences.Clear();
 
