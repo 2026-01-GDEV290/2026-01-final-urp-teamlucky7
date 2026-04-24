@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,6 +9,8 @@ public class DialogueManager : MonoBehaviour
 
     public Text nameText;
     public Text dialogueText;
+    public Button continueButton;
+
     private string[] nameExtra;
     public bool nextSentence;
     private int totalSentences;
@@ -80,13 +83,24 @@ public class DialogueManager : MonoBehaviour
         dialogueText.text = sentence;
     }
 
-    public void EndDialogue ()
+    public bool EndDialogue ()
     {
         totalSentences = 0;
         currentSentence = 0;
         nameText.enabled = false;
         dialogueText.enabled = false;
+        continueButton.enabled = false;
+        continueButton.GetComponent<Image>().enabled = false;
+        continueButton.GetComponentInChildren<TextMeshProUGUI>().enabled = false;
+
+        if (nameText.GetComponentInParent<Image>().enabled)
+        {
+            nameText.GetComponentInParent<Image>().enabled = false;
+        }
+
         Debug.Log("End of Conversation");
+
+        return true;
     }
 
     public int GetCurrentSentenceNum()
