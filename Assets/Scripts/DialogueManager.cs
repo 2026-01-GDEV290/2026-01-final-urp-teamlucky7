@@ -7,8 +7,8 @@ public class DialogueManager : MonoBehaviour
 {
 
     public Text nameText;
-    public Text[] changeNameArray;
     public Text dialogueText;
+    private string[] nameExtra;
     public bool nextSentence;
     private int totalSentences;
     private int currentSentence;
@@ -29,12 +29,16 @@ public class DialogueManager : MonoBehaviour
         Debug.Log("Starting Conversation with " + dialogue.name);
         nameText.enabled = true;
         dialogueText.enabled = true;
+        nameExtra = new string[dialogue.nameExtra.Length];
+        Debug.Log("Length of Name Extra: " + nameExtra.Length);
+        for(int i = 0; i < nameExtra.Length; i++)
+        {
+            Debug.Log("Adding " + dialogue.nameExtra[i] + " to Name Extra.");
+            nameExtra[i] = dialogue.nameExtra[i];
+            Debug.Log("Added " + nameExtra[i] + " to Name Extra");
+        }
 
         nameText.text = dialogue.name;
-        for (int i = 0; i < changeNameArray.Length; i++)
-        {
-            changeNameArray[i].text = dialogue.nameExtra[i];
-        }
 
         sentences.Clear();
 
@@ -56,6 +60,14 @@ public class DialogueManager : MonoBehaviour
         {
             EndDialogue();
             return;
+        }
+
+        for(int i = 0; i < nameExtra.Length; i++)
+        {
+            if(i.Equals(currentSentence) && nameExtra != null && nameExtra[i] != null)
+            {
+                nameText.text = nameExtra[i];
+            }
         }
 
         nextSentence = true;
