@@ -1780,26 +1780,43 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogue:
-    name: ...
+    name: Narrator
     nameExtra:
     - Narrator
     - Gleebnar
+    - 
     - Narrator
     - Gleebnar
-    - Gleebnar
-    - Gleebnar
+    - 
+    - 
+    - 
+    - 
+    - 
     - Narrator
+    - 
+    - 
+    - 
     sentences:
-    - "You wake up to the sound of TV Static blaring throughout your room. You may
-      have just woken up, but you swear you could make out a voice in the static.
-      Curious, you listen closer, but the voice is intelligible. Ah. Oh, well. You
+    - 'You wake up to the sound of TV Static blaring throughout your room. You may
+      have just woken up, but you swear you could make out a voice in the static. '
+    - "Curious, you listen closer, but the voice is intelligible. Ah. Oh, well. You
       reach down to grab your remote and turn the television off, when\u2026"
-    - wahoo
-    - why'd you do that mario
-    - i dunno
-    - i dunno
-    - i dunno
-    - i dunno
+    - "\u2026THAT\u2019S RIGHT, EVEN YOU CAN WIN BIG! BIG MONEY! CASH, DOUGH, MOOLAH,
+      BIGGER THAN YOU\u2019VE EVER WON BEFORE! "
+    - THE ENTIRE GLEEBNAR FORTUNE, ALL YOURS TO KEEP! BUT IT COMES AT A COST!
+    - "Well, if the giant, booming voice that was now blasting out of your TV at
+      full volume wasn\u2019t enough to keep your attention\u2026that sure did."
+    - "PAY REAL CLOSE ATTENTION, OR YOU\u2019LL LOSE OUT GUARANTEED. "
+    - 'I, TOM GLEEBNAR, AM HOSTING A FULL WEEK-LONG GAMBLING EXTRAORDINAIRE,  '
+    - THE LIKES OF WHICH UNSEEN IN ANY CORNER OF THIS SIDE OF THE GALAXY!
+    - 'SEVEN DAYS, SEVEN CHANCES TO GET THE HIGHEST SCORE AMONGST ALL OF YOUR PEERS! '
+    - 'ONE VERY LUCKY CONTESTANT WILL WIN IT ALL AS THE HIGHEST SCORE AMONG YOU, '
+    - "NOT ONLY WINNING THE GLEEBNAR FORTUNE\u2026BUT THE RIGHTS TO THE CASINO ITSELF
+      AS WELL!"
+    - 'You feel yourself waking up from the anticipation.  '
+    - The Gleebnar Fortune, on top of the rights to the notorious Lucky 7 casino?
+      This could be your chance to get everything you deserve!
+    - "You pack your bags, gather up your courage, and head to the\u2026"
 --- !u!114 &2095102000
 MonoBehaviour:
   m_ObjectHideFlags: 0

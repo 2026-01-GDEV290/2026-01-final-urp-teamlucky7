@@ -64,9 +64,12 @@ public class DialogueManager : MonoBehaviour
 
         for(int i = 0; i < nameExtra.Length; i++)
         {
-            if(i.Equals(currentSentence) && nameExtra != null && nameExtra[i] != null)
+            if(i.Equals(currentSentence) && nameExtra != null && nameExtra[i].Length > 0)
             {
                 nameText.text = nameExtra[i];
+            } else
+            {
+                nameText.text = nameText.text;
             }
         }
 
