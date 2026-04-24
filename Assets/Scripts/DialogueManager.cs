@@ -16,6 +16,8 @@ public class DialogueManager : MonoBehaviour
     private int totalSentences;
     private int currentSentence;
 
+    public DialogueTrigger[] dialogueTriggers;
+
     private Queue<string> sentences;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
