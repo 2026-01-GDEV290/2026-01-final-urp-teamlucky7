@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: be0294152a823714d945a9a3b24c5fe0
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - bullseyeSprite: {fileID: 21300000, guid: 8664cab4e6dcaba4d955a713d73ec31f, type: 3}
+  - fortuneSprite: {fileID: 21300000, guid: 28f039808a4b53546b348f9307158225, type: 3}
+  - jackSprite: {fileID: 21300000, guid: 56444a677293cdd468af5fda81818333, type: 3}
+  - larrySprite: {fileID: 21300000, guid: 3118f46904e161c4e929d1fd45580c2d, type: 3}
+  - spyglassSprite: {fileID: 21300000, guid: 52aa5866e4c2d014fa77ab218e345285, type: 3}
+  - strangulaSprite: {fileID: 21300000, guid: 3ca6cebb4d9796a448183f0b2b7ca3a6, type: 3}
+  - alanSprite: {fileID: 21300000, guid: b6586a002a1393e4b98364011affd704, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

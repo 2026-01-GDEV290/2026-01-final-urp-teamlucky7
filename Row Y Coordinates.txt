@@ -1,0 +1,15 @@
+Y Coordinates:
+
+Sun Top Y: 
+
+Y Top (Star): -18.647
+
+Moon Y: -17.991
+
+Y Center (Alien): -17.314
+
+Seven Y: -16.686
+
+Xenomorph Y: -16.002
+
+Sun Button Y: -15.364
