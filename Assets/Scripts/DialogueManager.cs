@@ -10,6 +10,7 @@ public class DialogueManager : MonoBehaviour
     public Text nameText;
     public Text dialogueText;
     public Button continueButton;
+    public Button loadCasinoButton;
 
     private string[] nameExtra;
     public bool nextSentence;
@@ -27,6 +28,10 @@ public class DialogueManager : MonoBehaviour
         nextSentence = false;
         totalSentences = 0;
         currentSentence = -1;
+
+        loadCasinoButton.enabled = false;
+        loadCasinoButton.GetComponent<Image>().enabled = false;
+        loadCasinoButton.GetComponentInChildren<TextMeshProUGUI>().enabled = false;
     }
 
     public void StartDialogue (Dialogue dialogue)
@@ -94,6 +99,10 @@ public class DialogueManager : MonoBehaviour
         continueButton.enabled = false;
         continueButton.GetComponent<Image>().enabled = false;
         continueButton.GetComponentInChildren<TextMeshProUGUI>().enabled = false;
+
+        loadCasinoButton.enabled = true;
+        loadCasinoButton.GetComponent<Image>().enabled = true;
+        loadCasinoButton.GetComponentInChildren<TextMeshProUGUI>().enabled = true;
 
         if (nameText.GetComponentInParent<Image>().enabled)
         {
