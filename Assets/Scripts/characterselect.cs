@@ -30,6 +30,6 @@ public class characterselect : MonoBehaviour
  }
      public void SelectAlan()
  {
-    Playerinfo.Instance.SetCharacterByName("Alan Sluggard");
+    Playerinfo.Instance.SetCharacterByName("AlanSluggard");
  }
 }
