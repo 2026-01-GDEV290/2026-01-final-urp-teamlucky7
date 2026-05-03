@@ -15,6 +15,15 @@ public class GameController : MonoBehaviour
     [SerializeField] private int spinCost = 50;
     [SerializeField] private int spinTimeCost = 30;
 
+    public AudioSource audioSource;
+    public AudioClip coinSound;
+    public AudioClip slotPullSound;
+    public AudioClip slotSpinSound;
+    public AudioClip slotStopSound;
+    public AudioClip win2Sound;
+    public AudioClip win3Sound;
+    public AudioClip loseSound;
+
     private int prizeValue;
     private bool resultsChecked = false;
 
@@ -35,21 +44,29 @@ public class GameController : MonoBehaviour
             prizeValue = 0;
             prizeText.enabled = false;
             resultsChecked = false;
+            audioSource.PlayOneShot(slotStopSound);
         }
 
         if (rows[0].rowStopped && rows[1].rowStopped && rows[2].rowStopped && !resultsChecked)
         {
+            audioSource.loop = false;
             CheckResults();
             prizeText.enabled = true;
             prizeText.text = "Money Get! - " + prizeValue;
         }
+
     }
 
     private void OnMouseDown()
     {
         // Don't allow spin if reels are still spinning
         if (!rows[0].rowStopped || !rows[1].rowStopped || !rows[2].rowStopped)
+        {
+            audioSource.clip = slotSpinSound;
+            audioSource.loop = true;
+            audioSource.Play();
             return;
+        }
 
         if (Playerinfo.Instance == null)
         {
@@ -96,6 +113,7 @@ public class GameController : MonoBehaviour
         }
 
         HandlePulled();
+        audioSource.PlayOneShot(slotPullSound);
 
         for (int i = 0; i < 15; i += 5)
         {
@@ -106,80 +124,101 @@ public class GameController : MonoBehaviour
 
     private void CheckResults()
     {
+        //match 3 below:
         if (rows[0].stoppedSlot == "Star" && rows[1].stoppedSlot == "Star" && rows[2].stoppedSlot == "Star")
         {
             prizeValue = 100;
+            audioSource.PlayOneShot(win3Sound);
         }
         else if (rows[0].stoppedSlot == "Moon" && rows[1].stoppedSlot == "Moon" && rows[2].stoppedSlot == "Moon")
         {
             prizeValue = 200;
+            audioSource.PlayOneShot(win3Sound);
         }
         else if (rows[0].stoppedSlot == "Alien" && rows[1].stoppedSlot == "Alien" && rows[2].stoppedSlot == "Alien")
         {
             prizeValue = 300;
+            audioSource.PlayOneShot(win3Sound);
         }
         else if (rows[0].stoppedSlot == "Seven" && rows[1].stoppedSlot == "Seven" && rows[2].stoppedSlot == "Seven")
         {
             prizeValue = 777;
+            audioSource.PlayOneShot(win3Sound);
         }
         else if (rows[0].stoppedSlot == "Bar" && rows[1].stoppedSlot == "Bar" && rows[2].stoppedSlot == "Bar")
         {
             prizeValue = 400;
+            audioSource.PlayOneShot(win3Sound);
         }
         else if (rows[0].stoppedSlot == "Xenomorph" && rows[1].stoppedSlot == "Xenomorph" && rows[2].stoppedSlot == "Xenomorph")
         {
             prizeValue = 600;
+            audioSource.PlayOneShot(win3Sound);
         }
         else if (rows[0].stoppedSlot == "Sun" && rows[1].stoppedSlot == "Sun" && rows[2].stoppedSlot == "Sun")
         {
             prizeValue = 800;
+            audioSource.PlayOneShot(win3Sound);
         }
+
         else if ((rows[0].stoppedSlot == rows[1].stoppedSlot && rows[1].stoppedSlot == "Star")
             || (rows[1].stoppedSlot == rows[2].stoppedSlot && rows[2].stoppedSlot == "Star")
             || (rows[0].stoppedSlot == rows[2].stoppedSlot && rows[2].stoppedSlot == "Star"))
         {
             prizeValue = 50;
+            audioSource.PlayOneShot(win2Sound);
         }
         else if ((rows[0].stoppedSlot == rows[1].stoppedSlot && rows[1].stoppedSlot == "Moon")
             || (rows[1].stoppedSlot == rows[2].stoppedSlot && rows[2].stoppedSlot == "Moon")
             || (rows[0].stoppedSlot == rows[2].stoppedSlot && rows[2].stoppedSlot == "Moon"))
         {
             prizeValue = 100;
+            audioSource.PlayOneShot(win2Sound);
         }
         else if ((rows[0].stoppedSlot == rows[1].stoppedSlot && rows[1].stoppedSlot == "Alien")
             || (rows[1].stoppedSlot == rows[2].stoppedSlot && rows[2].stoppedSlot == "Alien")
             || (rows[0].stoppedSlot == rows[2].stoppedSlot && rows[2].stoppedSlot == "Alien"))
         {
             prizeValue = 150;
+            audioSource.PlayOneShot(win2Sound);
         }
         else if ((rows[0].stoppedSlot == rows[1].stoppedSlot && rows[1].stoppedSlot == "Bar")
             || (rows[1].stoppedSlot == rows[2].stoppedSlot && rows[2].stoppedSlot == "Bar")
             || (rows[0].stoppedSlot == rows[2].stoppedSlot && rows[2].stoppedSlot == "Bar"))
         {
             prizeValue = 200;
+            audioSource.PlayOneShot(win2Sound);
         }
         else if ((rows[0].stoppedSlot == rows[1].stoppedSlot && rows[1].stoppedSlot == "Seven")
             || (rows[1].stoppedSlot == rows[2].stoppedSlot && rows[2].stoppedSlot == "Seven")
             || (rows[0].stoppedSlot == rows[2].stoppedSlot && rows[2].stoppedSlot == "Seven"))
         {
             prizeValue = 389;
+            audioSource.PlayOneShot(win2Sound);
         }
         else if ((rows[0].stoppedSlot == rows[1].stoppedSlot && rows[1].stoppedSlot == "Xenomorph")
             || (rows[1].stoppedSlot == rows[2].stoppedSlot && rows[2].stoppedSlot == "Xenomorph")
             || (rows[0].stoppedSlot == rows[2].stoppedSlot && rows[2].stoppedSlot == "Xenomorph"))
         {
             prizeValue = 300;
+            audioSource.PlayOneShot(win2Sound);
         }
         else if ((rows[0].stoppedSlot == rows[1].stoppedSlot && rows[1].stoppedSlot == "Sun")
             || (rows[1].stoppedSlot == rows[2].stoppedSlot && rows[2].stoppedSlot == "Sun")
             || (rows[0].stoppedSlot == rows[2].stoppedSlot && rows[2].stoppedSlot == "Sun"))
         {
             prizeValue = 800;
+            audioSource.PlayOneShot(win2Sound);
+        }
+
+        else {
+            audioSource.PlayOneShot(loseSound);
         }
 
         if (Playerinfo.Instance != null && prizeValue > 0)
         {
             Playerinfo.Instance.AddMoney(prizeValue);
+            audioSource.PlayOneShot(coinSound);
         }
 
         UpdateScoreText();

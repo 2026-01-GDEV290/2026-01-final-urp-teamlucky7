@@ -4572,6 +4572,7 @@ MonoBehaviour:
   wheelManager: {fileID: 0}
   ballController: {fileID: 0}
   wheelDisplayPlane: {fileID: 1807224496}
+  rouletteTimeCost: 30
 --- !u!4 &1849946318
 Transform:
   m_ObjectHideFlags: 0
@@ -5150,6 +5151,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb5780ae2ec5f5048b985af9f6fe3c7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioSource: {fileID: 1936318635}
+  chipSound: {fileID: 8300000, guid: db44dcb1f26e6744f905805a49489bf5, type: 3}
+  winSound: {fileID: 8300000, guid: e1d778f481507504783ab1cfec023fdf, type: 3}
+  loseSound: {fileID: 8300000, guid: ad352de0de722b547947c7e3164dc311, type: 3}
   resultText: {fileID: 60533655}
   moneyText: {fileID: 2117909556}
   winText: {fileID: 224375823}

@@ -44,6 +44,9 @@ public class RaceManager : MonoBehaviour
         {
             horse.StopRace();
         }
+
+        restartButton.SetActive(true);
+
     }
 
     public void ResetRace()

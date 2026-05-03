@@ -3,6 +3,9 @@ using TMPro;
 
 public class FinishLine : MonoBehaviour
 {
+    public AudioSource audioSource;
+    public AudioClip winSound;
+    public AudioClip loseSound;
     public TextMeshProUGUI winText;
     public BettingManager bettingManager; // Drag BettingManager here
     private bool raceOver = false;
@@ -22,11 +25,15 @@ public class FinishLine : MonoBehaviour
                 {
                     winText.text = winner + " Won! You won $" + (bettingManager.currentBetAmount * 2);
                     bettingManager.AddWinnings(2f);
+                    audioSource.PlayOneShot(winSound);
                 }
                 else
                 {
+                    
                     winText.text = winner + " Won. You lost your bet.";
-                }
+                    audioSource.PlayOneShot(loseSound);
+
+            }
 
                 FindObjectOfType<RaceManager>().StopAllHorses();
 

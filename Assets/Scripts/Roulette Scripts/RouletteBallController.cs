@@ -37,6 +37,11 @@ public class RouletteBallController : MonoBehaviour
     public int LandedNumber { get; private set; } = -1;
     public bool HasLanded => hasLanded;
 
+    public AudioSource audioSource;
+    public AudioClip stop;
+    public AudioClip slowRolling;
+    public AudioClip fastRolling;
+
     private void Start()
     {
         ResetBall();
@@ -69,6 +74,9 @@ public class RouletteBallController : MonoBehaviour
         if (!isDropping)
         {
             currentAngularSpeed -= angularDeceleration * Time.deltaTime;
+            audioSource.clip = fastRolling;
+            audioSource.loop = true;
+            audioSource.Play();
 
             if (currentAngularSpeed <= minDropSpeed)
             {
@@ -105,6 +113,8 @@ public class RouletteBallController : MonoBehaviour
 
         hasLanded = true;
         LandedNumber = number;
+        audioSource.loop = false;
+        audioSource.PlayOneShot(stop);
 
         // Snap position to slot
         transform.position = slotTransform.position;

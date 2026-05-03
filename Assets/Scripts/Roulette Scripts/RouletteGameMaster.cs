@@ -6,6 +6,11 @@ public class RouletteGameMaster : MonoBehaviour
 {
     public static RouletteGameMaster Instance;
 
+    public AudioSource audioSource;
+    public AudioClip chipSound;
+    public AudioClip winSound;
+    public AudioClip loseSound;
+
     private readonly List<BettingChip> activeBets = new List<BettingChip>();
 
     public TMP_Text resultText;
@@ -87,6 +92,7 @@ public class RouletteGameMaster : MonoBehaviour
         if (!activeBets.Contains(chip))
         {
             activeBets.Add(chip);
+            audioSource.PlayOneShot(chipSound);
         }
 
         Debug.Log("Registered Bet:");
@@ -167,11 +173,13 @@ public class RouletteGameMaster : MonoBehaviour
             {
                 winText.text = "YOU WIN!";
                 winText.color = Color.green;
+                audioSource.PlayOneShot(winSound);
             }
             else
             {
                 winText.text = "YOU LOSE";
                 winText.color = Color.red;
+                audioSource.PlayOneShot(loseSound);
             }
         }
 
