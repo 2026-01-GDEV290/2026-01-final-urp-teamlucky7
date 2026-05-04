@@ -3,9 +3,10 @@ using TMPro;
 
 public class BettingManager : MonoBehaviour
 {
-    public float walletBalance = 1000f;
+    [SerializeField] private int raceTimeCost = 30;
+
     public TMP_InputField betInputField;
-    public TMP_Dropdown horseDropdown; // Drag your Dropdown here
+    public TMP_Dropdown horseDropdown;
     public TextMeshProUGUI walletDisplay;
 
     [HideInInspector] public float currentBetAmount;
@@ -18,31 +19,78 @@ public class BettingManager : MonoBehaviour
 
     public void UpdateWalletUI()
     {
-        walletDisplay.text = "Balance: $" + walletBalance;
+        if (Playerinfo.Instance != null)
+            walletDisplay.text = "Balance: $" + Playerinfo.Instance.currentBalance;
+        else
+            walletDisplay.text = "Balance: $0";
     }
 
     public bool PlaceBet()
     {
-        // 1. Get the horse name currently selected in the dropdown
+        if (Playerinfo.Instance == null)
+        {
+            Debug.LogWarning("Playerinfo instance missing.");
+            return false;
+        }
+
+        if (GameProcessManager.Instance == null)
+        {
+            Debug.LogWarning("GameProcessManager instance missing.");
+            return false;
+        }
+
         pickedHorseName = horseDropdown.options[horseDropdown.value].text;
 
-        // 2. Validate the money
         if (float.TryParse(betInputField.text, out float amount))
         {
-            if (amount > 0 && amount <= walletBalance)
+            if (amount <= 0)
+                return false;
+
+            int wholeAmount = Mathf.RoundToInt(amount);
+
+            if (!Playerinfo.Instance.RemoveMoney(wholeAmount))
             {
-                currentBetAmount = amount;
-                walletBalance -= amount;
-                UpdateWalletUI();
-                return true;
+                Debug.Log("Not enough money.");
+                return false;
             }
+
+            if (!GameProcessManager.Instance.TrySpendTime(raceTimeCost))
+            {
+                // Refund if there isn't enough time to race
+                Playerinfo.Instance.AddMoney(wholeAmount);
+                UpdateWalletUI();
+                return false;
+            }
+
+            currentBetAmount = wholeAmount;
+
+            UpdateWalletUI();
+            RefreshSharedPlayerUI();
+
+            return true;
         }
+
         return false;
     }
 
     public void AddWinnings(float multiplier)
     {
-        walletBalance += (currentBetAmount * multiplier);
+        int winnings = Mathf.RoundToInt(currentBetAmount * multiplier);
+
+        if (Playerinfo.Instance != null)
+        {
+            Playerinfo.Instance.AddMoney(winnings);
+        }
+
         UpdateWalletUI();
+        RefreshSharedPlayerUI();
+    }
+
+    private void RefreshSharedPlayerUI()
+    {
+        PlayerinfoDisplay display = FindFirstObjectByType<PlayerinfoDisplay>();
+
+        if (display != null)
+            display.RefreshDisplay();
     }
 }

@@ -26,7 +26,7 @@ public class StartIntros : MonoBehaviour
                 dialogueManager.GetDialogueTrigger(2).TriggerDialogue();
                 cutsceneManager.PlayCutscene(2);
                 break;
-            case "Madame Fortune":
+            case "Fortune":
                 dialogueManager.GetDialogueTrigger(3).TriggerDialogue();
                 cutsceneManager.PlayCutscene(3);
                 break;

@@ -18,6 +18,12 @@ public class Leaderboard : MonoBehaviour
     [SerializeField]
     private int day = 1;
 
+    [SerializeField] 
+    private int finalDay = 7;
+    [SerializeField] 
+    private string winSceneName = "WinScreen";
+    private string loseSceneName = "LoseScreen";
+
     [SerializeField]
     private TMP_Text npcText1;
     [SerializeField]
@@ -280,6 +286,7 @@ public class Leaderboard : MonoBehaviour
         npcValue5.text = "" + npcOrderedValue[4];
         npcValue6.text = "" + npcOrderedValue[5];
         npcValue7.text = "" + npcOrderedValue[6];
+        CheckForFinalWin(npcOrderedList[0]);
 
         npcText1.enabled = true;
         npcText2.enabled = true;
@@ -299,6 +306,25 @@ public class Leaderboard : MonoBehaviour
 
         showingLeaderboard = false;
         updateLeaderboard = false;
+
+     void CheckForFinalWin(string topName)
+    {
+            if (CasinoTimeManager.Instance == null)
+                return;
+
+            if (CasinoTimeManager.Instance.CurrentDay >= finalDay &&
+                topName == playerCharacter)
+            {
+                Debug.Log("Player won the casino tournament!");
+                UnityEngine.SceneManagement.SceneManager.LoadScene(winSceneName);
+            }
+            if (CasinoTimeManager.Instance.CurrentDay >= finalDay &&
+                topName != playerCharacter)
+            {
+                Debug.Log("Player LOST the casino tournament!");
+                UnityEngine.SceneManagement.SceneManager.LoadScene(loseSceneName);
+            }
+    }
     }
 }
 
