@@ -56,9 +56,6 @@ public class GameProcessManager : MonoBehaviour
         Debug.Log("Day ended.");
         SceneManager.LoadScene(8);
 
-
-
-
     }
 
     private void HandlePlayerBroke()
