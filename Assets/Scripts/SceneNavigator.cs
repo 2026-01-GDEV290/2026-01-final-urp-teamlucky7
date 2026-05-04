@@ -41,7 +41,7 @@ public class SceneNavigator : MonoBehaviour
 
     public void LoadNextday(int sceneIndex)
     {
-        
+        CasinoTimeManager.Instance.AdvanceToNextDay();
         SceneManager.LoadScene(3);
         SceneManager.LoadScene(2, LoadSceneMode.Additive);
     }

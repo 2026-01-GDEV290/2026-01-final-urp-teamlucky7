@@ -34,7 +34,7 @@ public class StartIntros : MonoBehaviour
                 dialogueManager.GetDialogueTrigger(4).TriggerDialogue();
                 cutsceneManager.PlayCutscene(4);
                 break;
-            case "Alan Slugger":
+            case "AlanSluggard":
                 dialogueManager.GetDialogueTrigger(5).TriggerDialogue();
                 cutsceneManager.PlayCutscene(5);
                 break;

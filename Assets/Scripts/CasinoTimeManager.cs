@@ -9,7 +9,7 @@ public class CasinoTimeManager : MonoBehaviour
     [SerializeField] private int closeHour = 24;
 
     [Header("Current Time")]
-    [SerializeField] private int currentDay = 1;
+    [SerializeField] public int currentDay = 1;
     [SerializeField] private int currentHour;
     [SerializeField] private int currentMinute;
 
@@ -68,6 +68,14 @@ public class CasinoTimeManager : MonoBehaviour
         return true;
     }
 
+    public void AdvanceToNextDay()
+    {
+        currentDay++;
+        currentHour = openHour;
+        currentMinute = 0;
+
+        RefreshPlayerUI();
+    }
 
     public string GetFormattedTime()
     {

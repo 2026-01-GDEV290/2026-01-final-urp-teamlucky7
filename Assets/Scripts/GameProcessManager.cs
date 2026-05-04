@@ -54,14 +54,14 @@ public class GameProcessManager : MonoBehaviour
     private void HandleDayEnded()
     {
         Debug.Log("Day ended.");
-        SceneManager.LoadScene(8);
+        SceneManager.LoadScene(9);
 
     }
 
     private void HandlePlayerBroke()
     {
         Debug.Log("Player is out of money.");
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(13);
 
 
     }
