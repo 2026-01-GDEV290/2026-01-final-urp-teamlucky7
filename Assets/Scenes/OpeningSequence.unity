@@ -829,7 +829,9 @@ MonoBehaviour:
   nameText: {fileID: 1564904516}
   dialogueText: {fileID: 520833195}
   continueButton: {fileID: 1679828137}
+  loadCasinoButton: {fileID: 0}
   nextSentence: 0
+  dialogueTriggers: []
 --- !u!4 &1068367074
 Transform:
   m_ObjectHideFlags: 0
@@ -1539,7 +1541,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2095101996}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 05b0db6cc2ecd4e40bcf03c259d884a2, type: 3}
   m_Name: 
@@ -1565,7 +1567,8 @@ MonoBehaviour:
   - {fileID: 1146013202}
   - {fileID: 812919427}
   - {fileID: 1330433617}
-  triggerOnSentenceNum: 0200000006000000090000000a000000
+  - {fileID: 1330433617}
+  triggerOnSentenceNum: 0200000006000000090000000a0000000a0000000a000000
 --- !u!114 &2095101999
 MonoBehaviour:
   m_ObjectHideFlags: 0

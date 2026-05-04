@@ -59,26 +59,15 @@ public class CasinoTimeManager : MonoBehaviour
             return false;
 
         int totalMinutes = GetCurrentTimeInMinutes() + minutesToSpend;
+
         currentHour = totalMinutes / 60;
         currentMinute = totalMinutes % 60;
 
-        if (GetCurrentTimeInMinutes() >= CloseMinutes)
-        {
-            AdvanceToNextDay();
-        }
-
         RefreshPlayerUI();
+
         return true;
     }
 
-    public void AdvanceToNextDay()
-    {
-        currentDay++;
-        currentHour = openHour;
-        currentMinute = 0;
-
-        RefreshPlayerUI();
-    }
 
     public string GetFormattedTime()
     {

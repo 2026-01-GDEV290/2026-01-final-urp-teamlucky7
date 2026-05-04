@@ -8,7 +8,7 @@ public class GameOpen : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        cutsceneManager.PlayCutscene(0);
+        cutsceneManager.PlayIntroCutscene(0);
         dialogueTrigger.TriggerDialogue();
     }
 

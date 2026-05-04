@@ -38,7 +38,6 @@ public class SceneNavigator : MonoBehaviour
         
         SceneManager.LoadScene(2);
         SceneManager.LoadScene(1, LoadSceneMode.Additive);
-        CasinoTimeManager.Instance.AdvanceToNextDay();
     }
 
     public void quitGame()
