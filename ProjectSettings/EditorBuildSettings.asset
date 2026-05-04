@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/SampleScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
   - enabled: 1
+    path: Assets/Scenes/OpeningSequence.unity
+    guid: 68924640c5e8cff4da696569e20575aa
+  - enabled: 1
     path: Assets/Scenes/TitleScreen.unity
     guid: c5aa2f75261a359439d27cd36f1b4347
   - enabled: 1
@@ -35,5 +38,11 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/leaderboard.unity
     guid: defac79a2133f2b458f60bd96989a3cb
+  - enabled: 1
+    path: Assets/Scenes/Intros.unity
+    guid: 05c4c1dcce64e7545a2337bd34a9ed4c
+  - enabled: 1
+    path: Assets/Scenes/Dialogue.unity
+    guid: e75c69d5bd6de4e2e9e12a941adc6af1
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0

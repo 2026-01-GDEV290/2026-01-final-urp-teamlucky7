@@ -16,28 +16,34 @@ public class SceneNavigator : MonoBehaviour
     {
         
         SceneManager.LoadScene(sceneIndex);
-        SceneManager.LoadScene(1, LoadSceneMode.Additive);
+        SceneManager.LoadScene(2, LoadSceneMode.Additive);
     }
 
     public void LoadCharacterSelect(int sceneIndex)
     {
         
-        SceneManager.LoadScene(7);
+        SceneManager.LoadScene(8);
+    }
+
+    public void LoadIntro(int sceneIndex)
+    {
+        
+        SceneManager.LoadScene(10);
     }
 
     public void LoadRoulette(int sceneIndex)
     {
         
-        SceneManager.LoadScene(5);
-        SceneManager.LoadScene(6, LoadSceneMode.Additive);
-        SceneManager.LoadScene(1, LoadSceneMode.Additive);
+        SceneManager.LoadScene(6);
+        SceneManager.LoadScene(7, LoadSceneMode.Additive);
+        SceneManager.LoadScene(2, LoadSceneMode.Additive);
     }
 
     public void LoadNextday(int sceneIndex)
     {
         
-        SceneManager.LoadScene(2);
-        SceneManager.LoadScene(1, LoadSceneMode.Additive);
+        SceneManager.LoadScene(3);
+        SceneManager.LoadScene(2, LoadSceneMode.Additive);
     }
 
     public void quitGame()
